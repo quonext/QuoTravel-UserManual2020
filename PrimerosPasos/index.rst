@@ -1,10 +1,10 @@
-###
+###########################
 Primeros pasos en QuoTravel
-###
+###########################
 En esta sección vamos a aprender a dar los primeros pasos en QuoTravel. 
 
 Acceso al sistema
-===
+=================
 
 El sistema se suministra siempre con algunos usuarios ya creados. Además de algunos usuarios que son necesarios para el funcionamiento del sistema, se proporciona un usuario con privilegios de administrador, que es el que utilizaremos para acceder al sistema por primera vez y para crear otros usuarios:
 
