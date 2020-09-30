@@ -178,6 +178,49 @@ Freemarker para email horario recogida
 Freemarker para SMS horario recogida en español
   Se utiliza para generar el SMS que enviamos a los hoteles para informar la hora de recogida de los traslados cuanod el móvil es español (prefijo 34).
 
+.. attention:: Conceptos facturación
+
+QuoTravel permite configurar una serie de cnceptos de facturación que actuarán como valores por defecto en caso de que un producto no tenga configurado ese campo. Estos conceptos se utilizarán en la facturacion para determinar los impuestos que aplican en cada caso.
+
+.. attention:: Divisa local
+
+QuoTravel utilizará esta divisa como divisa común a la hora de realizar comparaciones entre ingresos y costes que pueden definirse en distintas divisas dentro de los contratos.
+
+.. attention:: Facturación
+
+Marca de agua facturas
+  El funcionamiento para rellenar este campo es el mismo que en el caso del logo, explicado en esta misma sección del manual. Esta marca de agua se utilizará en la impresión de las facturas.
+
+Agente venta directa
+  En este campo vamos a poder especificar el agente contable que utilizará QuoTravel para las facturas hechas como venta directa (usualmente llamado cliente contado).
+
+.. attention:: Traslados
+
+QuoTravel permite definir las plantillas para las listas de pasajeros, diferenciando por el tipo de servicio (Shuttle, Privado, Ejecutivo y Compartido).
+
+.. attention:: Contabilidad
+
+Correo notificaciones contabilidad
+  Dirección de correo para re
+
+Margen cuadre facturas
+  Este campo permite indicar
+
+Margen aceptación factura
+  Mediante este campo podemos indicar cual es el margen de diferencia a la hora de aceptar una factura de compra que nos llegue a traves de la integración con Voxel.
+
+.. attention:: Activar módulos web
+
+  Los campos de esta pestaña van a permitir activar los tipos de producto que se van a poder vender mediante los iframes de QuoTravel.
+
+.. attention:: Controles genéricos
+
+Máximo de reservas
+  QuoTravel permite establecer un máximo de reservas en un periodo de minutos definido por el usuario y se puede activar la opción para desactivar el hotel en caso de cumplirse las condidiciones. 
+
+Markup negativo
+  Podemos indicar al programa que desactive un producto si detectamos una venta online con markup negativo, para darnos tiempo a revisar los contratos y ver si se ha producido un error.
+
 Usuarios
 --------
 QuoTravel maneja diferentes tipos de usuario que dan distintos niveles de acceso a la aplicación. Cuando se da de alta un nuevo usuario QuoTravel envía un correo con la contraseña de acceso que el usuario debe cambiar en su primer acceso. Para cada usuario vamos a poder definir la siguiente información:
@@ -207,6 +250,21 @@ Comentarios
 
 .. attention:: Enviar correos al usuario
 
-  1. Enviar correo
-  2. Enviar correo de bienvenida
-  3. Recuperar contraseña
+  1. Enviar correo (pendiente)
+  2. Enviar correo de bienvenida (pendiente)
+  3. Recuperar contraseña (pendiente)
+
+Tipos de usuario
+****************
+Los diferentes tipos de usuario son:
+
+  1. QuoTravel/Back. Son los usuarios que tendrán acceso a la configuración y operatividad de QuoTravel, en función de los permisos controlaremos el acceso a los distintos módulos.
+  2. Aeropuerto. Son los usuarios que acceden al módulo especifico del aeropuerto. Siempre relacionados con un aeropuerto concreto para ver gestionar sus traslados.
+  3. Agencia. Acceso para que las agencias puedan gestionar sus reservas directamente en QuoTravel.
+  4. Proveedor. Acceso para que los proveedores puedan ver sus pedidos de compra directamente en QuoTravel
+  5. Representantes. Son los usuarios que podrán utilizar la APP de venta de excursiones. Cada usuario estará asociado a un punto de venta, código de representante y banco (para la integración de los cobros de tarjeta)
+  6. Tokens API. Para las integraciones B2B que se vayan a utilizar. El ID del token lo asigna automáticamente QuoTravel mediante la acción Create Token
+  7. Web. Usuarios finales de la Web, son los usuarios que se dan de alta en la web del cliente y mediante esta opción podremos mantener la informacion del programa de puntos.
+
+
+ 
