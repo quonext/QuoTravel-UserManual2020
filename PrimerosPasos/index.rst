@@ -261,7 +261,7 @@ Los diferentes tipos de usuario son:
   2. Aeropuerto. Son los usuarios que acceden al módulo especifico del aeropuerto. Siempre relacionados con un aeropuerto concreto para ver gestionar sus traslados.
   3. Agencia. Acceso para que las agencias puedan gestionar sus reservas directamente en QuoTravel.
   4. Proveedor. Acceso para que los proveedores puedan ver sus pedidos de compra directamente en QuoTravel
-  5. Representantes. Son los usuarios que podrán utilizar la APP de venta de excursiones. Cada usuario estará asociado a un punto de venta, código de representante y banco (para la integración de los cobros de tarjeta)
+  5. Representantes. Son los usuarios que podrán utilizar la APP de venta de excursiones. Cada usuario estará asociado a un punto de venta, código de representante y banco (para la integración de los cobros de tarjeta) //TODO: ¿Porque necesitamos el banco si el punto de venta tiene el TPV?
   6. Tokens API. Para las integraciones B2B que se vayan a utilizar. El ID del token lo asigna automáticamente QuoTravel mediante la acción Create Token
   7. Web. Usuarios finales de la Web, son los usuarios que se dan de alta en la web del cliente y mediante esta opción podremos mantener la informacion del programa de puntos.
 
@@ -328,3 +328,87 @@ Correo
 :Host: La dirección del servidor de correo saliente. Normalmente este dato lo proporcionará el departamento de sistemas
 :Puerto: El puerto del servidor de correo saliente. Normalmente este dato lo proporcionará el departamento de sistemas
 :Usuario: El usuario a utilizar para conectarse al servidor de correo
+
+Creación de puntos de venta
+---------------------------
+Todas las reserva de QuoTravel están relacionadas con un punto de venta que puede ser la página web, las integraciones mendiante XML o el Call Center, por poner algunos ejemplos. La información que vamos a mantener de cada punto de venta es:
+
+:Nombre: Un identificador que nos permite recordarlo facilmente cuando lo veamos en las reservas.
+:Oficina: El enlace entre el punto de venta y la oficina a la que pertenece, es obligatorio enlazar un punto de venta con una oficina. Esto permite más adelante estudiar el promedio de ventas de cada oficina.
+:TPV: En aquellos casos en que el cobro del punto de venta se automatice a traves de una pasarela de pago.
+:Tarifa: Esto permite aplicar una tarifa por defecto a todas aquellas reservas relacionadas con el punto de venta
+:email: //TODO: Pendiente de MPEREZ (uso de este campo)
+:Horas para cancelación sin coste: Podremos definir esta politica de cancelación por punto de venta para una mayor flexibilidad
+
+Organización territorial
+========================
+En este apartado vamos a definir los paises y destinos en los que vamos a trabajar con QuoTravel y como se dividen hasta llegar a la definición de zonas que utilizaremos en la definición de hoteles y servicios.
+
+Paises
+------
+Creación de los paises en los que vamos a trabajar y dentro de los cuales definiremos los destinos. La información a mantener para cada país es:
+
+:Nombre: Nombre del pais 
+:UE: Para seleccionar aquellos paises que pertenecen a la unión europea.
+:VAT: Codigo que nos permitirá más adelante el cálculo del impuesto del valor añadido (IVA, IGIC, VAT, ITBIS, ...)
+:Aeropuertos locales: En este campo debemos concatenar los códigos IATA de los aeropuertos que se van a considerar locales en este país, separados por coma.
+:Codigo ISO: //TODO: Pendiente de MPEREZ (porque no se puede editar)
+:Orden: //TODO: (uso)
+
+Destinos
+--------
+Definición de los códigos de destino dentro de cada país. La información a mantener para cada destino es: 
+
+:País: Todo destino debe estar dentro de un país, para ir creando una estructura de arbol: Pais > Destino > Zona
+:Nombre: Etiqueta que le queremos dar al destino dentro de QuoTravel
+:Aeropuerto preferido: //TODO: (confirmar) Se utiliza para asignar un aeropuerto a los traslados que son punto a punto, ya que necesitamos que todos los servicios de traslado estén asignados a un aeropuerto para montar el calendario de traslados
+:VAT: Codigo que nos permitirá más adelante el cálculo del impuesto del valor añadido (IVA, IGIC, VAT, ITBIS, ...). Se usará en aquellos casos en que un destino tenga un tratamiento diferente dentro del pais.
+:Observaciones pago: //TODO: (uso)
+:Orden: //TODO: (uso)
+
+Zonas
+-----
+División de los destinos a efectos operativos, esta será la unidad más pequeña a la que podremos hacer referencia. La información para definir una zona es:
+
+:Destino: Toda zona debe estar relacionada con un destino.
+:Nombre: Etiqueta con la que vamos a identificar esta zona dentro de QuoTravel
+:VAT: Codigo que nos permitirá más adelante el cálculo del impuesto del valor añadido (IVA, IGIC, VAT, ITBIS, ...). Se usará en aquellos casos en que una zona tenga un tratamiento diferente dentro del pais.
+:Ruta: Enlace con la definición de rutas que veremos en operaciones y que permitiran un más facil manejo de los traslados de los clientes. TODO: (uso)
+:Alias: TODO: (uso)
+:Orden: //TODO: (uso)
+
+Áreas
+-----
+Este concepto va a permitir la creación de códigos que agrupen destinos de una manera más libre, de cara a la venta de producto. Un área podrá incluir varios destinos y al mismo tiempo un destino podrá estar en varias áreas. La información a mantener para cada área será la siguiente:
+
+:Nombre: Etiqueta que utilizaremos para referirnos a ella.
+:Lista de destinos: Selección de los destinos. Usando los botones + y - podremos agregar o eliminar destinos de un área. Al agregar podremos seleccionar varios destinos y añadirlos de una vez. //TODO: ¿Porque pone Cities? La lista que sale también lo pone.
+
+Divisas
+=======
+QuoTravel permite trabajar con varias divisas, para lo que será necesario definirlas en Admin. La información para cada divisa es:
+
+:Código ISO: Es el código de tres letras de la divisa.
+:Código ISO numérico: Este es el código que se usa en las pasarelas de pago.
+:Nombre: Etiqueta que queremos utilizar dentro de QuoTravel
+:Simbolo: Caracter para mostrar junto a los importes en esa divisa
+:Entidad: //TODO: (uso)
+:Tipo de cambio a divisa local: Se trata del tipo de cambio entre esta divisa y la divisa que se ha definido como local en QuoTravel
+
+:.. note:: Una vez creadas las primeras divisas es importante ir a la configuración general para indicar la divisa contable. Una vez se hayan creado reservas no se podrá cambiar este dato
+:.. note:: El tipo de cambio se podrá importar desde el servicio web del banco central europeo desde la lista de divisas
+
+Traducciones 
+============
+En este punto podemos gestionar las traducciones de manera centralizada. Podemos editar cada texto en los diferentes idiomas soportados, que se enumeran a continuación. QuoTravel está integrado con Google para traducir los textos, aunque la fiabilidad es la del servicio de Google. Siempre es recomendable comprobar luego los textos. TODO: ¿Que son estos literales? ¿Datos? ¿Nombre de campo?
+
+== ========
+es español
+en inglés
+fr francés
+de alemán
+it italiano
+ar árabe
+cz chino
+ru ruso
+== ========
