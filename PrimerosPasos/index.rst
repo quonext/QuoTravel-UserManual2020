@@ -15,7 +15,7 @@ Password  **1**
 Se recomienda cambiar la contraseña para garantizar la seguridad del entorno. 
 
 Configuracion inicial
-*********************
+=====================
 En la sección *Admin* vamos a encontrar una serie de configuraciones que se deben completar para comenzar a utilizar QuoTravel y que vamos a revisar a continuación.
 
 Datos básicos empresa
@@ -225,7 +225,7 @@ Markup negativo
   Podemos indicar al programa que desactive un producto si detectamos una venta online con markup negativo, para darnos tiempo a revisar los contratos y ver si se ha producido un error.
 
 Usuarios
---------
+========
 QuoTravel maneja diferentes tipos de usuario que dan distintos niveles de acceso a la aplicación. Cuando se da de alta un nuevo usuario QuoTravel envía un correo con la contraseña de acceso que el usuario debe cambiar en su primer acceso. Para cada usuario vamos a poder definir la siguiente información:
 
 :Login: Código alfanumérico del usuario. Debe ser único. No se distinguen mayúsculas.
@@ -254,7 +254,7 @@ Para proteger el sistema, si un usuario se equivoca de manera consecutiva 10 vec
   3. Recuperar contraseña. Si un usuario ha olvidado el pasword puede recuperarlo utilizando la opción *Password olvidado* que le aparece cuando va a acceder a QuoTravel. El sistema le enviará entonces un email con una url para indicar un nuevo password. El link que recibe el usuario tiene fecha de caducidad.
 
 Tipos de usuario
-****************
+----------------
 Los diferentes tipos de usuario son:
 
   1. QuoTravel/Back. Son los usuarios que tendrán acceso a la configuración y operatividad de QuoTravel, en función de los permisos controlaremos el acceso a los distintos módulos.
@@ -441,3 +441,5 @@ partneremail	Email del cliente o provedor
 
 Los campos disponibles dependen del entorno. Si estamos mandando un email a un usuario solo los campos relativos al usuario estarán, disponibles, lo mismo cuando enviamos un email a un partner, etc.
 
+Iconos
+======
