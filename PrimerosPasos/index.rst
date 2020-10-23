@@ -22,207 +22,145 @@ Datos básicos empresa
 ---------------------
 Dentro de *AppConfig* vamos a configurar una serie de datos como son:
 
-  * Business Name -> Nombre de la empresa que se utilizará en nuestra intranet, en documentos y en algunos emails
-  * Logo -> Si utilizamos la opción *BYTES* vamos a poder usar el botón UPLOAD para cargar el fichero del logo (se acepta cualquier formato de imagen: jpg, png, gif, webp ...). Si usamos la opcion URL se podrá indicar la ruta donde está almacenado el logo. Tiene el mismo uso que el nombre de la empresa
+  :Business Name: Nombre de la empresa que se utilizará en nuestra intranet, en documentos y en algunos emails
+  :Logo: Si utilizamos la opción *BYTES* vamos a poder usar el botón UPLOAD para cargar el fichero del logo (se acepta cualquier formato de imagen: jpg, png, gif, webp ...). Si usamos la opcion URL se podrá indicar la ruta donde está almacenado el logo. Tiene el mismo uso que el nombre de la empresa
 
-.. attention:: Configuración correo eletrónico. 
+*Configuración correo eletrónico* 
 
 Configurar los datos del servidor de correo que QuoTravel va a utilizar en los procesos de envío de correo:
 
-.. note:: Configuración SMTP. Utilizamos esta configuración para el envío de correos
+*Configuración SMTP* 
+Utilizamos esta configuración para el envío de correos
 
-  * Host SMTP
-  * Puerto SMTP
-  * Activación de la capa de transporte (TLS)
-  * Activación de Secure Sockets Layer (SSL)
+  :Host SMTP:
+  :Puerto SMTP:
+  :Activación de la capa de transporte TLS:
+  :Activación de Secure Sockets Layer SSL:
 
-.. note:: Credenciales administrador
+ *Credenciales administrador*
 
   * Usuario y contraseña -> Datos de usuario para que el sistema los utilice para enviar los correos
   * Remitente de los correos electrónicos (también se puede agregar una dirección para recibir copia)
 
-.. note:: Configuración POP 3. Utilizamos está configuración para la lectura de correos
+  *Configuración POP 3* : Utilizamos está configuración para la lectura de correos
 
   * Host POP 3
   * Usuario y contraseña
   * Email rebote -> Cuando un proceso de importar reservas desde un correo electrónico por fallo de formato da error, esta es la direccion que recibe un aviso con el mail reenviado.
 
-.. note:: Gmail required links
+ *Gmail required links*
 
 Son los enlaces a seguir para autorizar que podamos enviar correos utilizando los servidores de gmail.
 
-.. attention:: Integraciones
+  *Integraciones*
 
 Configurar las integraciones que permiten a QuoTravel interactuar con diferentes sistemas para el envio de SMS, realizar traducciones, Colas de trabajo y más...
 
-.. note:: SMS
+ *SMS*
 
 QuoTravel puede utilizar SMS para informar, por ejemplo, de las horas de recogida a los clientes de traslados. Esta opción requiere tener una cuenta en el servicio Clickatell.
 
-Habilitar Clickatell
-  Para indicar si queremos utilizar Clickatell para el envío de SMS
+  :Habilitar Clickatell: Para indicar si queremos utilizar Clickatell para el envío de SMS
+  :Clave Clickatell: La clave a utilizar para acceder a la plataforma de Clickatell
 
-Clave Clickatell
-  La clave a utilizar para acceder a la plataforma de Clickatell
-
-.. note:: Telegram
+ *Telegram*
 
 QuoTravel puede utilizar Telegram como metodo para informar a los cientes. El bot debe existir previamente, aquí unicamente configuramos los datos de conexión al servicio.   
 
-Habilitar Telegram
-  Para indicar si queremos utilizar Telegram para el envío de información.
+  :Habilitar Telegram: Para indicar si queremos utilizar Telegram para el envío de información.
+  :Token bot Telegram: Token para autenticar en el bot de Telegram
 
-Token bot Telegram
-  Token para autenticar en el bot de Telegram
-
-.. note:: DEEPL
+ *DEEPL*
 
 QuoTravel puede utilizar este servicio para proponer traducciones en a la hora de introducir textos en diferentes idiomas.
 
-Habilitar DeepL
-  Para indicar que este servicio está activo.
+  :Habilitar DeepL: Para indicar que este servicio está activo.
+  :Clave autenticación DeepL: Clave de acceso al servicio DeepL
 
-Clave autenticación DeepL
-  Clave de acceso al servicio DeepL
-
-.. note:: MapBox
+ *MapBox*
 
 QuoTravel utiliza este servicio de mapas en la ficha del hotel, tanto en la web como dentro de QuoTravel.
 
-.. note:: Flight stats
+*Flight stats*
 
 QuoTravel permite usar este servicio para actualizar la información de los horarios de vuelo de manera automática. 
 
-ID Flight stats
-  Identificación en el servicio.
+  :ID Flight stats: Identificación en el servicio.
+  :Clave API Flight: Clave de acceso a la API de Flight stats.
 
-Clave API Flight
-  Clave de acceso a la API de Flight stats.
-
-.. note:: DOCUSIGN
+ *DOCUSIGN*
 
 QuoTravel puede utilizar este servicio para el envio de los contratos a los clientes y proveedores de una manera segura.
 
-Clave integración
-  Clave de acceso al servicio.
+  :Clave integración: Clave de acceso al servicio.
+  :URI redirección: Campo proporcionado por DOCUSIGN como parte de los datos de conexión.
+  :Clave privada: Clave de firma dentro del servicio
 
-URI redirección 
-  Campor proporcionado por DOCUSIGN como parte de los datos de conexión.
-
-Clave privada
-  Clave de firma dentro del servicio
-
-.. note:: Message Queue
+ *Message Queue*
 
 QuoTravel utiliza las colas de trabajo para la automatización de algunos procesos que se explicarán más adelante.
 
-Host Message Queue
-  Dirección del servidor
+  :Host Message Queue: Dirección del servidor
+  :Usuario Message Queue: Usuario del servicio
+  :Contraseña Message Queue: Contraseña de acceso al servicio
 
-Usuario Message Queue
-  Usuario del servicio
+ *CMS*
 
-Contraseña Message Queue 
-  Contraseña de acceso al servicio
-
-.. attention:: CMS
 Aquí indicaremos la información necesaria para poder trabajar con el gestor de contenidos que después podremos aprovechar en la web. 
 
-Directorio configuración Nginx
-  Aquí indicamos el path del firectorio donde deben crearse los ficheros de configuración de Nginx
+  :Directorio configuración Nginx: Aquí indicamos el path del firectorio donde deben crearse los ficheros de configuración de Nginx
+  :Comando para recargar Nginx: Aquí indicamos el comando que debe ejecutarse cada vez que actualizamos la configuración de Nginx
 
-Comando para recargar Nginx
-  Aquí indicamos el comando que debe ejecutarse cada vez que actualizamos la configuración de Nginx
+*Plantillas*
 
-.. attention:: Plantillas
+QuoTravel utiliza plantillas para todos los documentos e emails que se generan desde la plataforma. De esta forma podemos personalizarlos. Normalmente utilizamos XSL-FO (Un documento XSL-FO es un documento XML en el que se especifica cómo se van a formatear unos datos para presentarlos en pantalla, papel u otros medios. ... La unidad básica de trabajo en un documento XSL-FO es el "Formating Object", unidad básica para presentar (formatear) la información) para generar pdfs y Freemarker para generar el html que metemos en los emails.
 
-QuoTravel utiliza plantillas para todos los documentos e emails que se generan desde la plataforma.
+  :Xsl-fo para listados: Se utiliza para generar los pdf a partir de los listados
+  :Xsl-fo para contrato de hotel: Se utiliza para generar el pdf para revisar / firmar el contrato de hotel
+  :Xsl-fo para contrato de traslado: Se utiliza para generar el pdf para revisar / firmar el contrato de traslado
+  :Xsl-fo para el voucher: Se utiliza para generar el voucher en formato pdf
+  :Xsl-fo para factura emitida: Se utiliza para generar el pdf de una factura
+  :Xsl-fo para el mundo: Se utiliza para generar un pdf con todo nuestro producto
+  :Xsl-fo para objeto: Se utiliza para generar un pdf para cualquier objeto del sistema, con vistas a imprimirlo.
+  :Xsl-fo para listas de traslado: Se utiliza para generar un pdf con una lista de traslados
+  :Xsl-fo para pedidos de compra: Se utiliza para generar un pdf para un pedido de compra
 
-De esta forma podemos personalizarlos.
+  :Freemarker para pedido de compra: Se utiliza para generar el email para una pedido de compra
+  :Freemarker para SMS horario recogida: Se utiliza para generar el SMS que enviamos a los clientes para informar la hora de recogida de los traslados
+  :Freemarker para email horario recogida: Se utiliza para generar el email que enviamos a los hoteles para informar la hora de recogida de los traslados
+  :Freemarker para SMS horario recogida en español: Se utiliza para generar el SMS que enviamos a los hoteles para informar la hora de recogida de los traslados cuanod el móvil es español (prefijo 34).
 
-Normalmente utilizamos XSL-FO para generar pdfs y Freemarker para generar el html que metemos en los emails.
-
-Xsl-fo para listados
-  Se utilia para generar los pdf a partir de los listados
-
-Xsl-fo para contrato de hotel
-  Se utiliza para generar el pdf para revisar / firmar el contrato de hotel
-
-Xsl-fopara contrato de traslado
-  Se utiliza para generar el pdf para revisar / firmar el contrato de traslado
-
-Xsl-fo para el voucher
-  Se utiliza para generar el voucher en formato pdf
-
-Xsl-fo para factura emitida
-  Se utiliza para generar el pdf de una factura
-
-Xsl-fo para el mundo
-  Se utiliza para generar un pdf con todo nuestro producto
-
-Xsl-fo para objeto
-  Se utiliza para generar un pdf para cualquier objeto del sistema, con vistas a imprimirlo.
-
-Xsl-fo para listas de traslado
-  Se utiliza para generar un pdf con una lista de traslados
-
-Xsl-fo para pedidos de compra
-  Se utiliza para generar un pdf para un pedido de compra
-
-Freemarker para pedido de compra
-  Se utiliza para generar el email para una pedido de compra
-
-Freemarker para SMS horario recogida
-  Se utiliza para generar el SMS que enviamos a los clientes para informar la hora de recogida de los traslados
-
-Freemarker para email horario recogida
-  Se utiliza para generar el email que enviamos a los hoteles para informar la hora de recogida de los traslados
-
-Freemarker para SMS horario recogida en español
-  Se utiliza para generar el SMS que enviamos a los hoteles para informar la hora de recogida de los traslados cuanod el móvil es español (prefijo 34).
-
-.. attention:: Conceptos facturación
+*Conceptos facturación*
 
 QuoTravel permite configurar una serie de cnceptos de facturación que actuarán como valores por defecto en caso de que un producto no tenga configurado ese campo. Estos conceptos se utilizarán en la facturacion para determinar los impuestos que aplican en cada caso.
 
-.. attention:: Divisa local
+*Divisa local*
 
 QuoTravel utilizará esta divisa como divisa común a la hora de realizar comparaciones entre ingresos y costes que pueden definirse en distintas divisas dentro de los contratos.
 
-.. attention:: Facturación
+*Facturación*
 
-Marca de agua facturas
-  El funcionamiento para rellenar este campo es el mismo que en el caso del logo, explicado en esta misma sección del manual. Esta marca de agua se utilizará en la impresión de las facturas.
+  :Marca de agua facturas: El funcionamiento para rellenar este campo es el mismo que en el caso del logo, explicado en esta misma sección del manual. Esta marca de agua se utilizará en la impresión de las facturas.
+  :Agente venta directa: En este campo vamos a poder especificar el agente contable que utilizará QuoTravel para las facturas hechas como venta directa (usualmente llamado cliente contado).
 
-Agente venta directa
-  En este campo vamos a poder especificar el agente contable que utilizará QuoTravel para las facturas hechas como venta directa (usualmente llamado cliente contado).
-
-.. attention:: Traslados
+*Traslados*
 
 QuoTravel permite definir las plantillas para las listas de pasajeros, diferenciando por el tipo de servicio (Shuttle, Privado, Ejecutivo y Compartido).
 
-.. attention:: Contabilidad
+*Contabilidad*
 
-Correo notificaciones contabilidad
-  Dirección de correo para enviar notificaciones al departamento de facturación/contabilidad
+  :Correo notificaciones contabilidad: Dirección de correo para enviar notificaciones al departamento de facturación/contabilidad
+  :Margen cuadre facturas: Este campo permite indicar //TODO: Completar desde teams
+  :Margen aceptación factura: Mediante este campo podemos indicar cual es el margen de diferencia a la hora de aceptar una factura de compra que nos llegue a traves de la integración con Voxel.
 
-Margen cuadre facturas
-  Este campo permite indicar
-
-Margen aceptación factura
-  Mediante este campo podemos indicar cual es el margen de diferencia a la hora de aceptar una factura de compra que nos llegue a traves de la integración con Voxel.
-
-.. attention:: Activar módulos web
+*Activar módulos web*
 
   Los campos de esta pestaña van a permitir activar los tipos de producto que se van a poder vender mediante los iframes de QuoTravel.
 
-.. attention:: Controles genéricos
+*Controles genéricos*
 
-Máximo de reservas
-  QuoTravel permite establecer un máximo de reservas en un periodo de minutos definido por el usuario y se puede activar la opción para desactivar el hotel en caso de cumplirse las condidiciones. 
-
-Markup negativo
-  Podemos indicar al programa que desactive un producto si detectamos una venta online con markup negativo, para darnos tiempo a revisar los contratos y ver si se ha producido un error.
+  :Máximo de reservas: QuoTravel permite establecer un máximo de reservas en un periodo de minutos definido por el usuario y se puede activar la opción para desactivar el hotel en caso de cumplirse las condidiciones. 
+  :Markup negativo: Podemos indicar al programa que desactive un producto si detectamos una venta online con markup negativo, para darnos tiempo a revisar los contratos y ver si se ha producido un error.
 
 Usuarios
 ========
