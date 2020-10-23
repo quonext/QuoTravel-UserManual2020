@@ -398,8 +398,12 @@ QuoTravel permite trabajar con varias divisas, para lo que será necesario defin
 :.. note:: Una vez creadas las primeras divisas es importante ir a la configuración general para indicar la divisa contable. Una vez se hayan creado reservas no se podrá cambiar este dato
 :.. note:: El tipo de cambio se podrá importar desde el servicio web del banco central europeo desde la lista de divisas
 
+Multiidioma
+===========
+En QuoTravel hay muchos contenidos que son multiidioma. Por ejemplo el nombre de un tipo de habitación, o la descripción de un hotel. Aparte de modificarlos en los mantenimientos correspondientes, podemos gestionarlos aquí de manera centralizada.
+
 Traducciones 
-============
+------------
 En este punto podemos gestionar las traducciones de manera centralizada. Podemos editar cada texto en los diferentes idiomas soportados, que se enumeran a continuación. QuoTravel está integrado con Google para traducir los textos, aunque la fiabilidad es la del servicio de Google. Siempre es recomendable comprobar luego los textos. TODO: ¿Que son estos literales? ¿Datos? ¿Nombre de campo?
 
 == ========
@@ -412,3 +416,28 @@ ar árabe
 cz chino
 ru ruso
 == ========
+
+Plantillas mailing
+------------------
+En QuoTravel es posible realizar envíos masivos de emails a clientes y proveedores. En este área podemos crear, modificar o eliminar las plantillas que utilizaremos después para esos emails. Para cada plantilla podemos indicar:
+
+:Caso de uso: Podremos indicar en que área queremos utilizar esta plantilla: Reservas, Partners o Usuarios
+:Nombre: Etiqueta que queremos darle a a la plantilla
+:Asunto: Contenido para el asunto del correo electrónico
+:Freemarker: La plantilla se escribe utilizando freemarker.
+
+Campos freemarker
+*****************
+Cuando construimos la plantilla hay una serie de campos que podemos incrustar, que enumeramos a continuación:
+
+============  ==============================
+businessname  Nombre de la empresa
+logourl	      Logo de la empresa
+username	    Nombre del usuario
+useremail	    Email del usuario
+partnername	  Nombre del cliente o proveedor
+partneremail	Email del cliente o provedor
+============  ==============================
+
+Los campos disponibles dependen del entorno. Si estamos mandando un email a un usuario solo los campos relativos al usuario estarán, disponibles, lo mismo cuando enviamos un email a un partner, etc.
+

@@ -7,9 +7,11 @@ Bienvenido al manual de usuario de QuoTravel
    :maxdepth: 4
    :numbered:
 
+   PrimerosPasos/index.rst
+
    Descripcion/index.rst
 
-   PrimerosPasos/index.rst
+   Extension/index.rst
 
 
 ================
