@@ -27,32 +27,35 @@ Dentro de *AppConfig* vamos a configurar una serie de datos como son:
 
 *Configuración correo eletrónico* 
 
-Configurar los datos del servidor de correo que QuoTravel va a utilizar en los procesos de envío de correo:
+  Configurar los datos del servidor de correo que QuoTravel va a utilizar en los procesos de envío de correo:
 
-*Configuración SMTP* 
-Utilizamos esta configuración para el envío de correos
+  *Configuración SMTP*
 
-  :Host SMTP:
-  :Puerto SMTP:
-  :Activación de la capa de transporte TLS:
-  :Activación de Secure Sockets Layer SSL:
+    Utilizamos esta configuración para el envío de correos desde QuoTravel.
 
- *Credenciales administrador*
+    :Host SMTP:
+    :Puerto SMTP:
+    :Activación capa de transporte TLS:
+    :Activación Secure Sockets Layer SSL:
 
-  * Usuario y contraseña -> Datos de usuario para que el sistema los utilice para enviar los correos
-  * Remitente de los correos electrónicos (también se puede agregar una dirección para recibir copia)
+  *Credenciales administrador*
+
+    :Usuario:
+    :Contraseña: Datos de usuario para que el sistema los utilice para enviar los correos
+    :Remitente: Remitente de los correos electrónicos (también se puede agregar una dirección para recibir una copia de todos los correos enviados)
 
   *Configuración POP 3* : Utilizamos está configuración para la lectura de correos
 
-  * Host POP 3
-  * Usuario y contraseña
-  * Email rebote -> Cuando un proceso de importar reservas desde un correo electrónico por fallo de formato da error, esta es la direccion que recibe un aviso con el mail reenviado.
+    :Host POP 3:
+    :Usuario:
+    :Contraseña:
+    :Email rebote: Cuando un proceso de importar reservas desde correo electrónico, por fallo de formato da error, esta es la dirección que recibe un aviso con el mail, con los datos, reenviado.
 
- *Gmail required links*
+  *Gmail required links*
 
-Son los enlaces a seguir para autorizar que podamos enviar correos utilizando los servidores de gmail.
+    Son los enlaces a seguir para autorizar que podamos enviar correos utilizando los servidores de gmail.
 
-  *Integraciones*
+*Integraciones*
 
 Configurar las integraciones que permiten a QuoTravel interactuar con diferentes sistemas para el envio de SMS, realizar traducciones, Colas de trabajo y más...
 
