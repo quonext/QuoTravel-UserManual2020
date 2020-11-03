@@ -1,0 +1,136 @@
+##############
+Business rules
+##############
+En esta sección vamos a aprender a configurar todos los actores que intervienen en las transacciones dentro de QuoTravel así como algunos conceptos comunes como son los mercados, las lineas de producto, etc...
+
+Mercados
+========
+Las reservas deben ir siempre asociadas a un mercado, por tanto es obligatorio crear al menos un código de mercado. El mercado será uno de los criterios que aplicará QuoTravel a la hora de buscar el precio que tiene que aplicar a la reserva, además de ser un concepto que puede servirnos para el estudio estadístico de la información. Los mercados se crean en *Biz -> Mercados*. La información a mantener para cada mercado es únicamente el nombre.
+
+Grupos de agencias
+==================
+QuoTravel maneja el concepto de grupos de agencia para permitir al cliente dar condiciones comunes de Mark up a un conjunto de agencias. Este es un concepto voluntario que puede o no utilizarse y puede ponerse en marcha en cualquier momento. Los grupos de agencia se crean en *Biz -> Grupos de agencias*. La información para cada grupo es la siguiente:
+
+  :Nombre: Etiqueta que representa al grupo dentro de QuoTravel.
+  :Markup: Código de markup que aplicaremos a todas las agencias que asociemos al grupo, siempre que la propia agencia no tenga un markup propio.
+
+Agencias
+========
+Las agencias dentro de QuoTravel representan a los clientes a los que se facturarán las reservas que vayamos asociando a ellas. Toda reserva debe tener una agencia relacionada. Si vamos a la opcion *Biz -> Agencias* vamos a ver un listado de las agencias creadas hasta el momento, su estado y posición, esto incluye el importe de sus reservas, el importe ya facturado y el saldo pendiente de cada una de ellas. Desde ls lista podremos abrir la ficha de una agencia para actualizar su información, consultar todos sus datos u obtner un PDF con todas las tarifas de esa agencia. La información a mantener para cada agencia es la siguiente:
+
+General
+-------
+Datos generales de la agencia.
+
+  :Nombre: Etiqueta que representa a la agencia en QuoTravel.
+  :Estado: Nos indica si la agencia está activa. Podemos desactivar una agencia para dejar de utilizarla a nivel operativo pero conservar su referencia para los datos históricos. Existe un estado "Crédito excedido" que indica que la agencia ha superado alguno de sus límites de crédito y por tanto no puede hacer reservas.
+  :Grupo: Enlace con los grupos de agencias mencionados anteriormente.
+  :Mercado: Enlace con el mercado. De esta manera al indicar la agencia en la reserva también heredará el mercado, aunque será posible personalizar el mercado en cada reserva.
+  :Idioma: Idioma por defecto de los clientes de esa agencia, se pondrá en las reservas de la agencia, aunque será posible personalizar el idioma en cada reserva.
+
+Contacto
+--------
+Datos de contacto general con la agencia. 
+
+  :Dirección completa: Texto en el que vamos a poder indicar la dirección postal completa de la agencia.
+  :Teléfono: Número de contacto principal con la agencia
+  :Email: Correo electrónico principal de la agencia
+
+Operaciones
+-----------
+Datos que afectarán a la operativa diaria con las reservas de la agencia.
+
+  :Marca: Indicaremos con cual de nuestras marcas trabaja este código de agencia.
+  :Reglas de cancelación: Indicar cual es la regla general de cancelación con la que va a trabajar esta agencia.
+  :Documentación requerida: //TODO: ¿Cual es el uso de este campo? 
+  :Crédito permitido: Aquellas agencias que no tengan esta marca deberán prepagar todas sus reservas antes de la fecha de servicio y en caso contrario serán canceladas.
+  :Permite venta directa: Marcas aquellas agencias a cuyos clientes podremos vender servicios que se pagan al contado en el destino, como las excursiones.
+  :Requiere informe paro de ventas: //TODO: ¿Cual es el uso de este campo?
+
+Seleccion de productos 
+----------------------
+Condiciones para el producto que podremos utilizar en las reservas de esta agencia. 
+
+  :Permite on request: Lo marcaremos si esta agencia quiere disponibilidad aunque sea on request.
+  :Permite PVP: Lo marcaremos si esta agencia respeta los PVP que le pasemos. Si no está marcada esta opción no le proporcionaremos precios que estén marcados como PVP obligatorio.
+  :Terceros permitidos: Lo marcaremos si esta agencia quiere producto de terceros (producto que obtengamos a traves de una integración xml).
+
+Revenue
+-------
+Condiciones que afectarán al precio de venta que daremos a la agencia.
+
+  :Markup: Aquí asignamos el margen que se debe utilizar con este cliente. El margen se aplica sobre los precios de compra, cuando no existe un contrato de venta que fije el precio. Un ejemplo típico es el del producto que obtenemos a través de una integración con un tercero, donde solo tenemos el precio de compra.
+  :Fee: Condiciones de tasas que aplicaremos a las reservas de este cliente. //TODO: ¿Que ocurre si a una agencia hay que facturarle el Handling fee y el Rep. Service?
+
+Facturación
+-----------
+Datos que afectan a las facturas que vamos a generar en base a las reservas de la agencia.
+
+  :Divisa: Código de la divisa a utilizar en la facturación. En caso de que sea necesario, QuoTravel realizará la conversión entre la divisa del precio de venta y la divisa de facturación.
+  :Agente financiero: Relación con los agentes financieros que comentaremos dentro del modulo de finanzas y que nos servirá para obtener los datos de impuestos a utilizar.
+  :Exportable a app facturación: //TODO: ¿Que significa esto? ¿Enlace con BC?
+  :ID en app facturación: Código de enlace entre QuoTravel y la aplicación de facturación.
+  :Facturar shuttle por separada: Permite indicar al sistema que al facturar los traslados genere una factura separada para los clientes de shuttle. 
+
+Líneas de producto
+==================
+Esta codificación nos a va permitir separar los productos que vendemos y compramos para varias utilidades dentro de QuoTravel:
+  1. Asignación a los contratos, de esta manera podemos simplificar el contenido de los mismos.
+  2. Asignación a los markups, de esta manera se reducen las condiciones
+  3. Agrupación estadística de nuestros productos para su posterior estudio.
+
+La definición de una línea de producto se hace en *Biz -> Lineas de producto*; unicamente hay que rellenar una etiqueta identificativa. Tenemos la posibilidad de inactivar una linea de producto temporalmente. 
+
+Markups
+=======
+Los márgenes nos sirven para indicar que reglas debemos aplicar para el cálculo de un precio de venta, cuando lo que tenemos es solo un contrato de compra.  Si existe un contrato de venta válido para nuestro cliente ese es el que manda pero, si solo tenemos un contrato de compra, todavía podemos obtener el precio de venta aplicando un margen, si es que existe alguno aplicable para nuestro cliente. Los markups se definen en *Biz -> Markups* y la información que podemos rellenar es la siguiente:
+
+  :Nombre: Esta será la etiqueta identificativa.
+  :Activo: Un código de markup se podrá desactivar temporalmente.
+  :Retail: //TODO: ¿Cual es el uso de este campo? 
+
+En la ficha del markup podremos ver y definir que entidades utilizan cada códigos:
+
+  Grupos de agencias, Se pueden asociar varios grupos de agencia
+  Agencias, Se pueden asociar varias agencias
+
+En las lineas del markup podemos detallar el modo de aplicación y el importe del mismo:
+
+  :Línea de producto: Enlace con productos, a traves de su línea de productos.
+  :Porcentaje: Importe porcentual del markup.
+  :Markup mínimo: Importe monetario del mínimo que queremos aplicar, en caso de que la aplicación del porcentaje sobre el precio de compra no llegue a este mínimo, este será el importe que vamos a facturar al cliente.
+  :Markup máximo: En caso de que queramos limitar el importe a facturar al cliente. 
+  :Activo: Cada línea del markup se puede activar o desactivar individualmente.
+
+ La lógica de aplicación de margenes es:
+
+  * Si no existe un contrato de venta entonces intentamos conseguir el precio de venta aplicando un margen sobre el precio de compra
+  * Las reglas de margen están indicadas en la agencia o, si no, en el grupo de agencias
+  * Buscamos una línea de margen activa para el producto que estamos vendiendo
+  * Si existe esa línea aplicamos margen
+  * Si no existe esa línea no podemos vender ese producto
+
+Comisiones
+==========
+Las comisiones se aplican tanto a clientes como proveedores, y pueden convertirse en un descuento o en una comisión real con su iva correspondiente. En ambos casos se genera una línea de cargo que facturaremos, utilizaremos para validar la factura del proveedor, o se aplicará como un descuento en la factura. En el caso de las reservas que son pago directo en el hotel será el único servicio que vamos a facturar, con lo que será la única línea de cargo existente en la reserva. Las comisiones se van liquidando con cada reserva o pedido de compra. Las comisiones se definen en *Biz -> Comisiones* y la información que podemos mantener es la siguiente:
+
+  :Nombre: Esta será la etiqueta identificativa.
+  :Activa: Un código de comisiones se puede desactivar temporalmente.
+
+En la ficha de la comisión vamos a poder ver y definir que entidades se asocian a cada código:
+
+  Grupos de agencias, Se pueden asociar varios grupos de agencia
+  Agencias, Se pueden asociar varias agencias
+
+//TODO: Teniendo en cuenta que las comisiones se asocian a los contratos, ¿Que necesidad hay de esta lista de agencias?
+
+En las lineas de la comisión vamos a poder detallar el modo de aplicación y el importe de la misma:
+
+  :Líneas de producto: Enlace con productos, a traves de su línea de productos.
+  :Porcentaje: Importe porcentual de la comisión
+  :Descuento: Indicamos cuando queremos que la comisión se aplique como un descuento en la factura
+  :Activo: Cada línea de comisión se puede activar o desactivar individualmente.
+
+
+ 
+

@@ -13,6 +13,8 @@ Bienvenido al manual de usuario de QuoTravel
 
    Extension/index.rst
 
+   Biz/index.rst
+
 
 ================
 Indices y tablas

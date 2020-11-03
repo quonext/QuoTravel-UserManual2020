@@ -216,7 +216,7 @@ Dentro del área de organización podremos crear las diferentes empresas que vay
 
 :Nombre: Nombre que queremos que se muestre en los informes
 :Logo: Imagen corporativa de la compañia
-:Agente financiero: Relación con los agentes financieros que comentaremos más adelante y que nos servirá para obtener los datos de impuestos a utilizar.
+:Agente financiero: Relación con los agentes financieros que comentaremos dentro del módulo de finanzas y que nos servirá para obtener los datos de impuestos a utilizar.
 :Serie facturación: Aquí indicaremos el código de série para las facturas emitidas por esta empresa
 :Serie autofactura: Aquí indicaremos el código de série a utilizar cuando la empresa se autofacture un coste
 :Registry data: Pendiente de confirmar que es el NIF 
