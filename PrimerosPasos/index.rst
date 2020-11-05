@@ -135,7 +135,7 @@ QuoTravel utiliza plantillas para todos los documentos e emails que se generan d
 
 *Conceptos facturación*
 
-QuoTravel permite configurar una serie de cnceptos de facturación que actuarán como valores por defecto en caso de que un producto no tenga configurado ese campo. Estos conceptos se utilizarán en la facturacion para determinar los impuestos que aplican en cada caso.
+QuoTravel permite configurar una serie de cnceptos de facturación que actuarán como valores por defecto, para cada tipo de producto, en caso de que un producto no tenga configurado ese campo. Estos conceptos se utilizarán en la facturacion para determinar los impuestos que aplican en cada caso.
 
 *Divisa local*
 
@@ -219,7 +219,7 @@ Dentro del área de organización podremos crear las diferentes empresas que vay
 :Agente financiero: Relación con los agentes financieros que comentaremos dentro del módulo de finanzas y que nos servirá para obtener los datos de impuestos a utilizar.
 :Serie facturación: Aquí indicaremos el código de série para las facturas emitidas por esta empresa
 :Serie autofactura: Aquí indicaremos el código de série a utilizar cuando la empresa se autofacture un coste
-:Registry data: Pendiente de confirmar que es el NIF 
+:Registry data: //TODO: Pendiente de confirmar que es el NIF 
 :Datos de pago: Registro de los datos bancarios de la empresa
 
 Creación de marcas

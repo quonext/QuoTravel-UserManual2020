@@ -131,6 +131,40 @@ En las lineas de la comisión vamos a poder detallar el modo de aplicación y el
   :Descuento: Indicamos cuando queremos que la comisión se aplique como un descuento en la factura
   :Activo: Cada línea de comisión se puede activar o desactivar individualmente.
 
+Fees
+====
+Para cada cliente podemos definir un conjunto de Fees (entre ellos el más habitual es el Handling Fee) que se aplicarán a las reservas para generar lineas de cargo que se incluiran en las facturas. Para mantener un Fee tenemos que ir a *Biz -> Fees* donde veremos que la información se estructura en forma de cabecera y lineas de detalle de la siguiente manera:
 
- 
+*Cabecera*
+  :Nombre: Será la etiqueta identificativa
+  :Concepto facturación: Enlace con la tabla que define el comportamiento a nivel de impuestos.
+
+*Lineas*
+  :Nombre: Es el enlace entre la cabecera y las lineas
+  :Inicio: Fecha inicial de vigencia de la aplicación
+  :Final: Fecha final de vigencia de la aplicación
+
+  :Por noche: Indica si el precio de este Fee se va a aplicar a cada noche de la estancia.
+  :IVA Incluido: Cuando se marque indica que el precio del Fee ya lleva los impuestos incluidos.
+  :Porcentaje: El porcentaje del Fee que se aplicará sobre el importe del coste de la reserva. //TODO: Confirmar con Miguel
+
+  :Min. Pax Grupo: Definición del mínimo de personas que tiene que tener una reserva para ser considerada de grupo. //TODO: Comentar si este total es por Expediente o reserva
+  :Min. Habs. Grupo: Definición del mínimo de habitaciones que tiene que tener una reserva para ser considerada de grupo.
+
+  :Precio adulto reserva individual: Precio por adulto que aplicaremos en las reservas individuales.
+  :Precio niño reserva individual: Precio por niño que aplicaremos en las reservas individuales.
+  :Precio habitación reserva individual: Precio por habitación que aplicaremos en las reservas individuales.
+  :Precio reserva reserva individual: Precio por total por reserva que aplicaremos en las reservas individuales.
+
+  :Precio adulto reserva grupo: Precio por adulto que aplicaremos en las reservas de grupo.
+  :Precio niño reserva grupo: Precio por niño que aplicaremos en las reservas de grupo.
+  :Precio habitación reserva grupo: Precio por habitación que aplicaremos en las reservas de grupo.
+  :Precio reserva reserva grupos: Precio por total por reserva que aplicaremos en las reservas de grupo.
+
+  :Para hoteles propios: Si está marcado aplicaremos el fee a las reservas donde el contrato de compra no esté marcado como facturación directa. Esto es, hoteles que gestionemos nosotros e integraciones con terceros.
+  :Para hoteles directos: Si está marcado aplicaremos el fee a las reservas donde el contrato de compra sí esté marcado como facturación directa. Esto es, contratos que solo tenemos en el sistema para controlar los cupos y los cierres de venta.
+  :Para traslados: Si está marcado quiere decir que aplicaremos este fee a las reservas de solo traslado. //TODO: Confirmar con Miguel.
+  :Para cualquier expendiente: Cuando queremos que este fee se aplique a cualquier expendiente, sin importar los productos que haya en él.
+
+Como vemos un Fee se podrá definir como un precio fijo o como un porcentaje sobre el importe de la reserva, ambas condiciones son excluyentes. Para facilitar la creación de las lineas tenemos la acción *Copiar previo* que permite traer los datos del registro anterior al registro que estamos creando.
 
