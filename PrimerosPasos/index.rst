@@ -152,18 +152,18 @@ QuoTravel permite definir las plantillas para las listas de pasajeros, diferenci
 
 *Contabilidad*
 
-  :Correo notificaciones contabilidad: Dirección de correo para enviar notificaciones al departamento de facturación/contabilidad
-  :Margen cuadre facturas: Este campo permite indicar //TODO: Completar desde teams
+  :Correo notificaciones contabilidad: Dirección de correo para enviar notificaciones al departamento de facturación/contabilidad.
+  :Margen cuadre facturas: Este campo permite indicar un margen para considerar una factura como pagada.
   :Margen aceptación factura: Mediante este campo podemos indicar cual es el margen de diferencia a la hora de aceptar una factura de compra que nos llegue a traves de la integración con Voxel.
 
 *Activar módulos web*
 
-  Los campos de esta pestaña van a permitir activar los tipos de producto que se van a poder vender mediante los iframes de QuoTravel.
+  Los campos de esta pestaña van a permitir activar los motores de venta online de QuoTravel.
 
 *Controles genéricos*
 
   :Máximo de reservas: QuoTravel permite establecer un máximo de reservas en un periodo de minutos definido por el usuario y se puede activar la opción para desactivar el hotel en caso de cumplirse las condidiciones. 
-  :Markup negativo: Podemos indicar al programa que desactive un producto si detectamos una venta online con markup negativo, para darnos tiempo a revisar los contratos y ver si se ha producido un error.
+  :Markup negativo: Podemos indicar al programa que desactive un producto si detectamos una venta online con markup negativo, para darnos tiempo a revisar los contratos y ver si se ha producido un error. Se envía un correo al departamento de reservas.
 
 Usuarios
 ========
@@ -216,11 +216,11 @@ Dentro del área de organización podremos crear las diferentes empresas que vay
 
 :Nombre: Nombre que queremos que se muestre en los informes
 :Logo: Imagen corporativa de la compañia
-:Agente financiero: Relación con los agentes financieros que comentaremos dentro del módulo de finanzas y que nos servirá para obtener los datos de impuestos a utilizar.
-:Serie facturación: Aquí indicaremos el código de série para las facturas emitidas por esta empresa
-:Serie autofactura: Aquí indicaremos el código de série a utilizar cuando la empresa se autofacture un coste
-:Registry data: //TODO: Pendiente de confirmar que es el NIF 
-:Datos de pago: Registro de los datos bancarios de la empresa
+:Agente financiero: Relación con los agentes financieros que comentaremos dentro del módulo de finanzas y que nos servirá para obtener los datos de impuestos a utilizar. //TODO: Confirmar con Miguel 
+:Serie facturación: Aquí indicaremos el código de série para las facturas emitidas por esta empresa //TODO: ¿Sería muy dificil mantener una tabla de numeración por fecha de registro? ¿Como de complicado es crear una serie por módulo? Algo parecido a los conceptos de facturacion de AppConfig
+:Serie autofactura: Aquí indicaremos el código de série a utilizar cuando la empresa se autofacture un coste. //TODO: ¿Donde podemos definir la serie para los abonos?
+:CIFNIF: Es el numero de registro fiscal de la empresa. 
+:Datos de pago: Registro de los datos bancarios de la empresa. //TODO: ¿Como podemos gestionar cuando un cliente tenga más de una cuenta contable?
 
 Creación de marcas
 ------------------
@@ -249,7 +249,7 @@ Identificación
 
 :ID: Código de identificación de la oficina, servirá para enlazar en los productos y reservas
 :Nombre: Descripción de la oficina
-:Logo: Imagen asociada a la oficina 
+:Logo: Imagen asociada a la oficina //TODO: ¿Cuando vamos a necesitar un logo diferente en la oficina y donde se utizaría?
 
 Configuración
 
@@ -259,15 +259,15 @@ Configuración
 
 Contacto
 
-:Email: Dirección de contacto de la oficina
+:Email: Dirección de contacto de la oficina //TODO: ¿Tiene funcionalidad asociada?
 :Telefono y fax: Datos de contacto
 :Dirección: Dirección postal de la oficina
-:Teléfono de confirmación de recogidas: Pendiente
+:Teléfono de confirmación de recogidas: TODO: ¿Es solo informativo?
 
 Correo
 
-:Host: La dirección del servidor de correo saliente. Normalmente este dato lo proporcionará el departamento de sistemas
-:Puerto: El puerto del servidor de correo saliente. Normalmente este dato lo proporcionará el departamento de sistemas
+:Host: La dirección del servidor de correo saliente. Normalmente este dato lo proporcionará el departamento de sistemas TODO: Esta informacion no se duplica con AppConfig
+:Puerto: El puerto del servidor de correo saliente. Normalmente este dato lo proporcionará el departamento de sistemas.
 :Usuario: El usuario a utilizar para conectarse al servidor de correo
 
 Creación de puntos de venta
@@ -290,7 +290,7 @@ Paises
 Creación de los paises en los que vamos a trabajar y dentro de los cuales definiremos los destinos. La información a mantener para cada país es:
 
 :Nombre: Nombre del pais 
-:UE: Para seleccionar aquellos paises que pertenecen a la unión europea.
+:UE: Para seleccionar aquellos paises que pertenecen a la unión europea. TODO: ¿Tiene algún efecto práctico?
 :VAT: Codigo que nos permitirá más adelante el cálculo del impuesto del valor añadido (IVA, IGIC, VAT, ITBIS, ...)
 :Aeropuertos locales: En este campo debemos concatenar los códigos IATA de los aeropuertos que se van a considerar locales en este país, separados por coma.
 :Codigo ISO: //TODO: Pendiente de MPEREZ (porque no se puede editar)

@@ -168,3 +168,109 @@ Para cada cliente podemos definir un conjunto de Fees (entre ellos el más habit
 
 Como vemos un Fee se podrá definir como un precio fijo o como un porcentaje sobre el importe de la reserva, ambas condiciones son excluyentes. Para facilitar la creación de las lineas tenemos la acción *Copiar previo* que permite traer los datos del registro anterior al registro que estamos creando.
 
+Límites de crédito
+==================
+Para controlar el riesgo que queremos asumir con cada cliente podemos utilizar los límites de crédito, estos límites de crédito de mantienen en *Biz -> Límites de crédito* y su información es la siguiente:
+
+  :Nombre: Es la etiqueta identificativa.
+  :Tipo: Podemos definir límites sobre las reservas (serán las reservas no facturadas) o sobre la facturación (serán las facturas no pagadas).
+
+  :Divisa: Indica la divisa del importe que vamos a poner como límite
+  :Limite: Importe del límite
+
+  :Umbral de aviso: Importe a partir del que queremos recibir un aviso
+  :Email: Direcciones de correo que van a recibir el aviso, separadas por el simbolo ;
+  :Status: Para ver si el límite está activado, desactivado, avisado o excedido //TODO: ¿Qué aplicación tienen los dos últimos valores si un límite se puede aplicar a varios clientes 
+
+Proveedores
+===========
+En *Biz -> Proveedores* podremos mantener la información de los proveedores a los que enviamos las peticiones de servicio (reservas o servicios) y de los que vamos a recibir las facturas de compra que tendremos que validar contra nuestras previsiones. En la lista de proveedores el usuario podrá ver el importe en pedidos de compra, el importe en facturas recibidas y el importe pendiente de pago. Desde la ficha del proveedor vamos a poder generar un PDF con todos los precios de compra de un proveedor TODO: "Ahora mismo no hace nada, lo he probado en varios proveedores". Los datos a mantener para cada proveedor son los siguientes:
+
+  :Nombre: Es la etiqueta identificativa.
+  :Status: Para poder desactivar un proveedor sin necesidad de borrarlo, así dejaremos de poder trabajar con él, respetando los históricos.
+  :Comentarios: Notas que queramos dejar dentro de QuoTravel.
+
+  :Divisa: Código de la divisa que usaremos en la facturación del proveedor.
+  :Agente financiero: Enlace con los agentes que se definen en el area de finanzas que tienen la información fiscal y de impuestos.
+
+  :Dirección: Es la dirección postal completa del proveedor.
+  :Teléfono: Número principal de contacto con el proveedor.
+  :Email: Correo electrónico principal del proveedor.
+
+Facturación
+-----------
+
+  :Exportable a la app de facturación: TODO: ¿Que significa esto? ¿Enlace con BC?
+  :ID en app de facturación: Código del proveedor dentro de la app de facturación.
+
+Datos adicionales
+-----------------
+
+  :Pagadero a en vouchers: Texto que aparecerá en los vouchers que se emitan para los servicios de este proveedor.
+  :Porcentaje extra de markup: Será un porcentaje de margen adicional que se aplicará sobre los márgenes definidos. TODO: ¿se aplica a la hora de buscar el precio de venta, verdad?
+  :Provee hotel:
+  :Provee transfer:
+  :Provee excursiones:
+  :Provee ticket:
+  :Provee genericos: TODO: ¿Que aplicación práctica tienen estos campos? 
+
+Envío de pedidos
+----------------
+
+  :Método envío pedidos: Podemos escoger entre el envío por correo como un PDF adjunto, el envío mediante XML o el envío mediante el agente de QuoOn. TODO: ¿Explicación?
+  :Valor incluido en pedido: Marcaremos este campo cuando queramos que la valoración del servicio vaya incluida en el envío.
+  :Dirección de envío: Dirección a la que vamos a enviar los pedidos de compra.
+  :Envío automático: Marcar este campo para que los pedidos de compra se envíen automáticamente al asignarlo al proveedor.
+  :Confirmación automática: Si marcamos este campo el pedido se marca como confirmado al enviarlo, en caso contrario hay que marcar el pedido como confirmado, de manera manual.
+  :Email certificado: Para que el envío del correo se haga utilizando SSL. TODO: Confirmar que sea cierto.
+
+Representantes
+==============
+En *Biz -> Reps* vamos a poder mantener la información de los representantes de venta. En QuoTravel podemos definir representantes que son, básicamente, agentes que se llevan una comisión sobre una venta, pudiendo ser empleados o proveedores. Para cada representante definiremos una serie de datos:
+
+  :Nombre: Es la etiqueta identificativa.
+  :Status: Para poder desactivar un representante sin necesidad de borrarlo, así dejaremos de poder trabajar con él, respetando los históricos.
+  :Agente financiero: Enlace con los agentes que se definen en el area de finanzas que tienen la información fiscal y de impuestos. TODO: ¿Como se distingue cuando el representante es un empleado de cuando no lo és?
+
+  :Oficina: Todo representante debe estar asociado a una oficina de venta. Este dato permitirá obtener una estadistica de todos los representantes de cada oficina.
+  :Supervisor: Lo vamos a utilizar en aquellos casos en que un representante trabaje bajo la supervisión de otro representante. TODO: Yo estos campos los quitaria
+  :Porcentaje comision supervisor: Cuando el supervisor cobre una comisión sobre las ventas de los representantes bajo su supervisión.
+
+  :Dirección: Es la dirección postal completa del representante.
+  :Teléfono: Número de contacto con el representante.
+  :Email: Correo electrónico para contactar con él.
+  :Comentarios: Notas que queramos dejar dentro de QuoTravel. 
+
+Talonarios de tickets
+---------------------
+Vista de los talonarios ya entregados al representante, para que podamos revisar su estado. También tenemos un campo para ver el talonario que se usará en los tickets que se hagan a traves de la APP de venta de excursiones. 
+ 
+Liquidación de ventas
+=====================
+Desde la ficha de cada representante podremos lanzar el proceso de liquidación que se inicia mostrando una pantalla al usuario donde podrán seguir los pasos hasta crear y registrar la liquidación:
+
+  1. Seleccionar las fechas que se van a incluir en el proceso y pulsar en *Aplicar filtros*, estos filtros afectan al numero de reservas, total de venta y comisión que sale en la pantalla.
+  2. El usuario acceder a la lista de tickets que se van a liquidar para excluir algún ticket que por algún motivo se quiera excluir de la liquidación aunque este dentro del periodo de fechas.
+  3. Se puede hacer una previsualización de la liquidación.
+  4. Para las ventas hechas al contado directamente por el representante el usuario podrá marcar la opción Crear factura para cliente contado.
+  5. Una vez de acuerdo con la liquidación pulsando en el botón Liquidar para seguir adelante
+  6. Se tienen que introducir los pagos, para representar el dinero entregado por el representante, que servirán para liquidarse con la factura.
+  7. Una vez completado el proceso se podrá generar un PDF con la liquidación.
+
+Comisiones
+==========
+En *Biz -> Comisiones* vamos a poder definir las comisiones que se aplican a los representantes. A cada comisión que se le asigna una etiqueta y después abrir la ficha de la comisión para detallarla. El detalle de las comisiones se introduce de la siguiente manera:
+
+  :Agente: Será el código de representante al que aplica
+  :Linea de producto: Enlace con las lineas de producto que agrupan los productos simplificando la introducción de comisiones.
+  :Fechas: Periodo de aplicación
+  :Base: Para indicar cual es el importe base de cálculo de la comisión. Las opciones son Total o Margen. TODO: No veo una manera facil de aplicar la comisión por Margen y me falta una opción para indicar Total sin impuestos.
+  :Porcentaje: Precio de la comisión
+  :Supervisor: Lo vamos a utilizar en aquellos casos en que un representante trabaje bajo la supervisión de otro representante.
+  :Comisión supervisor: Cuando el supervisor cobre una comisión sobre las ventas de los representantes bajo su supervisión.
+  :Resultado: TODO: Comentar opciones
+  :Impuestos incluidos: Permite indicar si a la comisión hay que aplicar
+
+Centros de producción
+=====================
+TODO: Comentarlo
