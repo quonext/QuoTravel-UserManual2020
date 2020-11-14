@@ -273,4 +273,33 @@ En *Biz -> Comisiones* vamos a poder definir las comisiones que se aplican a los
 
 Centros de producción
 =====================
-TODO: Comentarlo
+TODO: Comentarlo con Miguel
+
+Códigos promocionales
+=====================
+Los códigos promocionales se utilizan para aplicar descuentos sobre una venta, puede representar un descuento porcentual, un descuento concreto o un precio final. Para cada descuento podemos indicar:
+
+  :Código: TODO: ¿Como se asigna el valor?
+  :Nombre: Será la etiqueta identificativa.
+  :Agencia: Si queremos limitar la aplicación a los clientes de una sola agencia.
+  :Periodo venta: Con los campos de inicio y final podemos limitar las reservas a las que se aplica, en base a su fecha de venta.
+
+  :Tipo: Para indicar si se trata de un porcentaje o un precio final. Este valor hará que se muestren unos campos u otros.
+  :Porcentaje descuento: Porcentaje a aplicar sobre el importe de la reserva. TODO: ¿Como encontramos la base, con o sin impuestos?
+  :Importe máximo: Para controlar que el importe del descuento no supere un importe.
+  :Descuento: Cuando queremos que el descuento sea un importe en lugar de un porcentaje.
+  :Precio final: Precio unitario que tendrá el producto al aplicar el cupon. TODO: ¿Precio por persona, por habitación, ...?
+  :Unidades: Para indicar el máximo número de veces que se puede aplicar el código promocional.
+
+En la ficha de cada promoción vamos a poder ver la lista de reservas a las que se ha aplicado. Estos códigos están principalmente pensados para que el usuario los introduzca al momento de hacer la reserva, aunque también podremos aplicarlos directamente en el backoffice. *Solo se puede aplicar una promoción por reserva*.
+
+Planes de fidelización
+======================
+QuoTravel permite el mantenimiento de planes de fidelización o planes de puntos para que los clientes puedan conseguir puntos a traves de las compras que hacen y después utilizar esos puntos como pago en futuras compras. Los planes de compras se definen de la siguiente manera:
+
+  :Nombre: Será la etiqueta identificativa.
+  :Tipo cambio: Será la cantidad de dinero que hay que gastar para conseguir cada punto. TODO: ¿Es esto cierto?
+
+Dentro del plan podremos definir distintos escalados y dentro de cada uno de ellos podremos definir un tipo de cambio diferente al general del plan. TODO: Los escalados van en función del importe de la venta
+
+TODO: ¿Como se define la manera de aplicar esos puntos? 

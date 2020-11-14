@@ -11,9 +11,11 @@ Bienvenido al manual de usuario de QuoTravel
 
    Descripcion/index.rst
 
+   Biz/index.rst
+
    Extension/index.rst
 
-   Biz/index.rst
+   Portfolio/index.rst
 
 
 ================
