@@ -1,6 +1,6 @@
-##############
-Business rules
-##############
+#################
+Reglas de negocio
+#################
 En esta sección vamos a aprender a configurar todos los actores que intervienen en las transacciones dentro de QuoTravel así como algunos conceptos comunes como son los mercados, las lineas de producto, etc...
 
 Mercados
