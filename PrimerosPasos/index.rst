@@ -202,7 +202,7 @@ Los diferentes tipos de usuario son:
   2. Aeropuerto. Son los usuarios que acceden al módulo especifico del aeropuerto. Siempre relacionados con un aeropuerto concreto para ver gestionar sus traslados.
   3. Agencia. Acceso para que las agencias puedan gestionar sus reservas directamente en QuoTravel.
   4. Proveedor. Acceso para que los proveedores puedan ver sus pedidos de compra directamente en QuoTravel
-  5. Representantes. Son los usuarios que podrán utilizar la APP de venta de excursiones. Cada usuario estará asociado a un punto de venta, código de representante y banco (para la integración de los cobros de tarjeta) //TODO: ¿Porque necesitamos el banco si el punto de venta tiene el TPV?
+  5. Representantes. Son los usuarios que podrán utilizar la APP de venta de excursiones. Cada usuario estará asociado a un punto de venta, código de representante y banco (para la integración de los cobros de tarjeta) //TODO: MPEREZ. ¿Porque necesitamos el banco si el punto de venta tiene el TPV?
   6. Tokens API. Para las integraciones B2B que se vayan a utilizar. El ID del token lo asigna automáticamente QuoTravel mediante la acción Create Token
   7. Web. Usuarios finales de la Web, son los usuarios que se dan de alta en la web del cliente y mediante esta opción podremos mantener la informacion del programa de puntos.
 
@@ -211,16 +211,16 @@ Organización de la empresa
 QuoTravel permite adaptarse a la organización interna de la empresa, incluyendo varias empresas con distribución en varias oficinas, así como la gestión de diferentes marcas de comercialización. Dentro del menú Admin encontraremos el área Organización donde podremos mantener esta información. 
 
 Creación de empresas
--------------------
+--------------------
 Dentro del área de organización podremos crear las diferentes empresas que vayamos a mantener en la instancia de QuoTravel. Esto quiere decir que dentro de la misma base de datos pueden coexistir varias empresas diferentes, cada una con su contabilidad, pero compartiendo la base de datos de clientes, usuarios, etc. De esta manera una oficina puede gestionar servicios independientemente de si luego serán facturados por una u otra empresa. Naturalmente, si queremos mantener bases de datos estancas para cada una de nuestras empresas también es posible. Para cada empresa vamos a poder mantener la siguiente información:
 
 :Nombre: Nombre que queremos que se muestre en los informes
 :Logo: Imagen corporativa de la compañia
-:Agente financiero: Relación con los agentes financieros que comentaremos dentro del módulo de finanzas y que nos servirá para obtener los datos de impuestos a utilizar. //TODO: Confirmar con Miguel 
-:Serie facturación: Aquí indicaremos el código de série para las facturas emitidas por esta empresa //TODO: ¿Sería muy dificil mantener una tabla de numeración por fecha de registro? ¿Como de complicado es crear una serie por módulo? Algo parecido a los conceptos de facturacion de AppConfig
-:Serie autofactura: Aquí indicaremos el código de série a utilizar cuando la empresa se autofacture un coste. //TODO: ¿Donde podemos definir la serie para los abonos?
+:Agente financiero: Relación con los agentes financieros que comentaremos dentro del módulo de finanzas y que nos servirá para obtener los datos fiscales a utilizar. 
+:Serie facturación: Aquí indicaremos el código de série para las facturas emitidas por esta empresa.
+:Serie autofactura: Aquí indicaremos el código de série a utilizar cuando la empresa se autofacture un coste.
 :CIFNIF: Es el numero de registro fiscal de la empresa. 
-:Datos de pago: Registro de los datos bancarios de la empresa. //TODO: ¿Como podemos gestionar cuando un cliente tenga más de una cuenta contable?
+:Datos de pago: Registro de los datos bancarios de la empresa. Para los datos que queremos que aparezcan impresos en la factura.
 
 Creación de marcas
 ------------------
@@ -249,7 +249,7 @@ Identificación
 
 :ID: Código de identificación de la oficina, servirá para enlazar en los productos y reservas
 :Nombre: Descripción de la oficina
-:Logo: Imagen asociada a la oficina //TODO: ¿Cuando vamos a necesitar un logo diferente en la oficina y donde se utizaría?
+:Logo: Imagen asociada a la oficina. Para incluir en la petición a los proveedores en aquellos casos que se quiere diferenciar por oficina.
 
 Configuración
 
@@ -259,14 +259,14 @@ Configuración
 
 Contacto
 
-:Email: Dirección de contacto de la oficina //TODO: ¿Tiene funcionalidad asociada?
+:Email: Dirección de contacto de la oficina. Esta la dirección usada en el remitente de los envios de correo a los proveedores.
 :Telefono y fax: Datos de contacto
 :Dirección: Dirección postal de la oficina
-:Teléfono de confirmación de recogidas: TODO: ¿Es solo informativo?
+:Teléfono de confirmación de recogidas: Este dato aparecerá en los vouchers que se imprimen para el cliente.
 
 Correo
 
-:Host: La dirección del servidor de correo saliente. Normalmente este dato lo proporcionará el departamento de sistemas TODO: Esta informacion no se duplica con AppConfig
+:Host: La dirección del servidor de correo saliente. Normalmente este dato lo proporcionará el departamento de sistemas. Para aquellos casos en que una oficina tenga un servidor de correo distinto de la central.
 :Puerto: El puerto del servidor de correo saliente. Normalmente este dato lo proporcionará el departamento de sistemas.
 :Usuario: El usuario a utilizar para conectarse al servidor de correo
 
@@ -290,11 +290,11 @@ Paises
 Creación de los paises en los que vamos a trabajar y dentro de los cuales definiremos los destinos. La información a mantener para cada país es:
 
 :Nombre: Nombre del pais 
-:UE: Para seleccionar aquellos paises que pertenecen a la unión europea. TODO: ¿Tiene algún efecto práctico?
+:UE: Para seleccionar aquellos paises que pertenecen a la unión europea. Se reflejará en las facturas de compra y venta para ver las facturas intra y extra comunitarias.
 :VAT: Codigo que nos permitirá más adelante el cálculo del impuesto del valor añadido (IVA, IGIC, VAT, ITBIS, ...)
 :Aeropuertos locales: En este campo debemos concatenar los códigos IATA de los aeropuertos que se van a considerar locales en este país, separados por coma.
 :Codigo ISO: //TODO: Pendiente de MPEREZ (porque no se puede editar)
-:Orden: //TODO: (uso)
+:Orden: Para ordenar los paises en la WEB.
 
 Destinos
 --------
@@ -302,10 +302,10 @@ Definición de los códigos de destino dentro de cada país. La información a m
 
 :País: Todo destino debe estar dentro de un país, para ir creando una estructura de arbol: Pais > Destino > Zona
 :Nombre: Etiqueta que le queremos dar al destino dentro de QuoTravel
-:Aeropuerto preferido: //TODO: (confirmar) Se utiliza para asignar un aeropuerto a los traslados que son punto a punto, ya que necesitamos que todos los servicios de traslado estén asignados a un aeropuerto para montar el calendario de traslados
+:Aeropuerto preferido: Se utiliza para asignar un aeropuerto a los traslados que son punto a punto, ya que necesitamos que todos los servicios de traslado estén asignados a un aeropuerto para montar el calendario de traslados
 :VAT: Codigo que nos permitirá más adelante el cálculo del impuesto del valor añadido (IVA, IGIC, VAT, ITBIS, ...). Se usará en aquellos casos en que un destino tenga un tratamiento diferente dentro del pais.
-:Observaciones pago: //TODO: (uso)
-:Orden: //TODO: (uso)
+:Observaciones pago: //TODO: Pendiente MPEREZ (uso)
+:Orden: Para ordenar los destinos en la WEB.
 
 Zonas
 -----
@@ -314,16 +314,16 @@ División de los destinos a efectos operativos, esta será la unidad más peque�
 :Destino: Toda zona debe estar relacionada con un destino.
 :Nombre: Etiqueta con la que vamos a identificar esta zona dentro de QuoTravel
 :VAT: Codigo que nos permitirá más adelante el cálculo del impuesto del valor añadido (IVA, IGIC, VAT, ITBIS, ...). Se usará en aquellos casos en que una zona tenga un tratamiento diferente dentro del pais.
-:Ruta: Enlace con la definición de rutas que veremos en operaciones y que permitiran un más facil manejo de los traslados de los clientes. TODO: (uso)
-:Alias: TODO: (uso)
-:Orden: //TODO: (uso)
+:Ruta: Enlace con la definición de rutas que veremos en operaciones y que permitiran un más facil manejo de los traslados de los clientes.
+:Alias: Este campo permite la busqueda alternativa de una zona cuando estamos vendiendo en la WEB.
+:Orden: Para ordenar las zonas en la WEB. 
 
 Áreas
 -----
 Este concepto va a permitir la creación de códigos que agrupen destinos de una manera más libre, de cara a la venta de producto. Un área podrá incluir varios destinos y al mismo tiempo un destino podrá estar en varias áreas. La información a mantener para cada área será la siguiente:
 
 :Nombre: Etiqueta que utilizaremos para referirnos a ella.
-:Lista de destinos: Selección de los destinos. Usando los botones + y - podremos agregar o eliminar destinos de un área. Al agregar podremos seleccionar varios destinos y añadirlos de una vez. //TODO: ¿Porque pone Cities? La lista que sale también lo pone.
+:Lista de destinos: Selección de los destinos. Usando los botones + y - podremos agregar o eliminar destinos de un área. Al agregar podremos seleccionar varios destinos y añadirlos de una vez. 
 
 Divisas
 =======
@@ -333,7 +333,6 @@ QuoTravel permite trabajar con varias divisas, para lo que será necesario defin
 :Código ISO numérico: Este es el código que se usa en las pasarelas de pago.
 :Nombre: Etiqueta que queremos utilizar dentro de QuoTravel
 :Simbolo: Caracter para mostrar junto a los importes en esa divisa
-:Entidad: //TODO: (uso)
 :Tipo de cambio a divisa local: Se trata del tipo de cambio entre esta divisa y la divisa que se ha definido como local en QuoTravel
 
 :.. note:: Una vez creadas las primeras divisas es importante ir a la configuración general para indicar la divisa contable. Una vez se hayan creado reservas no se podrá cambiar este dato
@@ -345,7 +344,7 @@ En QuoTravel hay muchos contenidos que son multiidioma. Por ejemplo el nombre de
 
 Traducciones 
 ------------
-En este punto podemos gestionar las traducciones de manera centralizada. Podemos editar cada texto en los diferentes idiomas soportados, que se enumeran a continuación. QuoTravel está integrado con Google para traducir los textos, aunque la fiabilidad es la del servicio de Google. Siempre es recomendable comprobar luego los textos. TODO: ¿Que son estos literales? ¿Datos? ¿Nombre de campo?
+En este punto podemos gestionar las traducciones de manera centralizada. Podemos editar cada texto en los diferentes idiomas soportados, que se enumeran a continuación. QuoTravel está integrado con Google para traducir los textos, aunque la fiabilidad es la del servicio de Google. Siempre es recomendable comprobar luego los textos. Es un punto centralizado donde ver todas las traducciones de Países, Hoteles, Productos, etc...
 
 == ========
 es español

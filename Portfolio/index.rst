@@ -1,7 +1,7 @@
 ########
 Porfolio
 ########
-En este área vamos a poder dar de alta y mantener la información de los servicios que va a vender la agencia así como las condiciones de disponibilidad, venta y compra para cada uno de ellos. QuoTravel permite la gestión de los siguientes tipos de producto (TODO: Podriamos quitar Rentacar y Train de la lista?) que luego vamos a tratar en profundidad:
+En este área vamos a poder dar de alta y mantener la información de los servicios que va a vender la agencia así como las condiciones de disponibilidad, venta y compra para cada uno de ellos. QuoTravel permite la gestión de los siguientes tipos de producto que luego vamos a tratar en profundidad:
 
   * Entancias en Hoteles.
   * Traslados. 
@@ -21,7 +21,7 @@ Tarifas
 Las tarifas nos van a permitir la definición de distintos niveles de precios dentro de los contratos que creemos para los distintos servicios/productos. Cada tarifa se define de la siguiente información:
 
   :Nombre: Etiqueta interna de la tarifa.
-  :Orden: TODO: ¿Orden de aplicación de la tarifa?
+  :Orden: Para poderlas ordenar en la selección de tarifas.
 
   :Nombre público: Nombre que mostraremos a la hora de enviar los tarifarios a los clientes. Permite la opción multi-idioma.
   :Términos y condiciones: Texto libre para incluir a la hora de imprimir el tarifario. Permite la opción multi-idioma.
@@ -29,7 +29,7 @@ Las tarifas nos van a permitir la definición de distintos niveles de precios de
 
 Observaciones
 -------------
-Podemos definir observaciones que deben aparecer automáticamente al hacer una reserva TODO: Aparecen en los vouchers. Para cada código de observación podemos indicar una serie de filtros (que se utilizan para saber si esta observación debe aparecer o no). La información para definir cada observación es la siguiente:
+Podemos definir observaciones que deben aparecer automáticamente al hacer una reserva. Aparecen en la página web y en los vouchers que se imprimen para los clientes. Para cada código de observación podemos indicar una serie de filtros (que se utilizan para saber si esta observación debe aparecer o no). La información para definir cada observación es la siguiente:
 
   :Tipo producto: Indicaremos a cúal de los tipos de producto queremos asociar esta observación.
   :Texto: Detalle de la observación, permite la definición en varios idiomas.
@@ -38,7 +38,7 @@ Podemos definir observaciones que deben aparecer automáticamente al hacer una r
   :Destino: Cuando queremos limitar su aparición a las reservas de un destino.
   :Zona: Cuando queremos limitar su aparición a las reservas de un zona.
 
-  :Periodo de fechas: Podremos indicar el periodo de fechas de venta al que vamos a aplicar esta observación. (TODO: ¿Es cierto que aplica sobre venta?)
+  :Periodo de fechas: Podremos indicar el periodo de fechas de servicio al que vamos a aplicar esta observación.
   :Activo: Podremos activar o desactivar manualmente la observación.
 
 Etiquetas

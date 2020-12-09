@@ -42,10 +42,10 @@ Datos que afectarán a la operativa diaria con las reservas de la agencia.
 
   :Marca: Indicaremos con cual de nuestras marcas trabaja este código de agencia.
   :Reglas de cancelación: Indicar cual es la regla general de cancelación con la que va a trabajar esta agencia.
-  :Documentación requerida: //TODO: ¿Cual es el uso de este campo? 
+  :Documentación requerida: //TODO: MPEREZ. ¿Cual es el uso de este campo? 
   :Crédito permitido: Aquellas agencias que no tengan esta marca deberán prepagar todas sus reservas antes de la fecha de servicio y en caso contrario serán canceladas.
   :Permite venta directa: Marcas aquellas agencias a cuyos clientes podremos vender servicios que se pagan al contado en el destino, como las excursiones.
-  :Requiere informe paro de ventas: //TODO: ¿Cual es el uso de este campo?
+  :Requiere informe paro de ventas: Si marcamos este campo cuando generemos el informe de paros de venta a las agencias, se incluirá esta agencia.
 
 Seleccion de productos 
 ----------------------
@@ -60,7 +60,7 @@ Revenue
 Condiciones que afectarán al precio de venta que daremos a la agencia.
 
   :Markup: Aquí asignamos el margen que se debe utilizar con este cliente. El margen se aplica sobre los precios de compra, cuando no existe un contrato de venta que fije el precio. Un ejemplo típico es el del producto que obtenemos a través de una integración con un tercero, donde solo tenemos el precio de compra.
-  :Fee: Condiciones de tasas que aplicaremos a las reservas de este cliente. //TODO: ¿Que ocurre si a una agencia hay que facturarle el Handling fee y el Rep. Service?
+  :Fee: Condiciones de tasas que aplicaremos a las reservas de este cliente.
 
 Facturación
 -----------
@@ -68,7 +68,7 @@ Datos que afectan a las facturas que vamos a generar en base a las reservas de l
 
   :Divisa: Código de la divisa a utilizar en la facturación. En caso de que sea necesario, QuoTravel realizará la conversión entre la divisa del precio de venta y la divisa de facturación.
   :Agente financiero: Relación con los agentes financieros que comentaremos dentro del modulo de finanzas y que nos servirá para obtener los datos de impuestos a utilizar.
-  :Exportable a app facturación: //TODO: ¿Que significa esto? ¿Enlace con BC?
+  :Exportable a app facturación: Para poder indicar si los movimientos de esta agencia se van a exportar a contabilidad.
   :ID en app facturación: Código de enlace entre QuoTravel y la aplicación de facturación.
   :Facturar shuttle por separada: Permite indicar al sistema que al facturar los traslados genere una factura separada para los clientes de shuttle. 
 
@@ -87,7 +87,7 @@ Los márgenes nos sirven para indicar que reglas debemos aplicar para el cálcul
 
   :Nombre: Esta será la etiqueta identificativa.
   :Activo: Un código de markup se podrá desactivar temporalmente.
-  :Retail: //TODO: ¿Cual es el uso de este campo? 
+  :Retail: Para indicar si el precio obtenido es un precio neto (precio agencia) o precio bruto (precio final cliente). Cuando lo marquemos quiere decir que el precio de venta obtenido al aplicar el markup es un precio bruto.
 
 En la ficha del markup podremos ver y definir que entidades utilizan cada códigos:
 
@@ -122,7 +122,7 @@ En la ficha de la comisión vamos a poder ver y definir que entidades se asocian
   Grupos de agencias, Se pueden asociar varios grupos de agencia
   Agencias, Se pueden asociar varias agencias
 
-//TODO: Teniendo en cuenta que las comisiones se asocian a los contratos, ¿Que necesidad hay de esta lista de agencias?
+Estas comisiones se aplicarán cuando no haya un contrato de venta con la agencia. 
 
 En las lineas de la comisión vamos a poder detallar el modo de aplicación y el importe de la misma:
 
@@ -146,9 +146,9 @@ Para cada cliente podemos definir un conjunto de Fees (entre ellos el más habit
 
   :Por noche: Indica si el precio de este Fee se va a aplicar a cada noche de la estancia.
   :IVA Incluido: Cuando se marque indica que el precio del Fee ya lleva los impuestos incluidos.
-  :Porcentaje: El porcentaje del Fee que se aplicará sobre el importe del coste de la reserva. //TODO: Confirmar con Miguel
+  :Porcentaje: El porcentaje del Fee que se aplicará sobre el importe de venta de la reserva.
 
-  :Min. Pax Grupo: Definición del mínimo de personas que tiene que tener una reserva para ser considerada de grupo. //TODO: Comentar si este total es por Expediente o reserva
+  :Min. Pax Grupo: Definición del mínimo de personas que tiene que tener una reserva para ser considerada de grupo.
   :Min. Habs. Grupo: Definición del mínimo de habitaciones que tiene que tener una reserva para ser considerada de grupo.
 
   :Precio adulto reserva individual: Precio por adulto que aplicaremos en las reservas individuales.
@@ -163,7 +163,7 @@ Para cada cliente podemos definir un conjunto de Fees (entre ellos el más habit
 
   :Para hoteles propios: Si está marcado aplicaremos el fee a las reservas donde el contrato de compra no esté marcado como facturación directa. Esto es, hoteles que gestionemos nosotros e integraciones con terceros.
   :Para hoteles directos: Si está marcado aplicaremos el fee a las reservas donde el contrato de compra sí esté marcado como facturación directa. Esto es, contratos que solo tenemos en el sistema para controlar los cupos y los cierres de venta.
-  :Para traslados: Si está marcado quiere decir que aplicaremos este fee a las reservas de solo traslado. //TODO: Confirmar con Miguel.
+  :Para traslados: Si está marcado quiere decir que aplicaremos este fee a las reservas de traslados.
   :Para cualquier expendiente: Cuando queremos que este fee se aplique a cualquier expendiente, sin importar los productos que haya en él.
 
 Como vemos un Fee se podrá definir como un precio fijo o como un porcentaje sobre el importe de la reserva, ambas condiciones son excluyentes. Para facilitar la creación de las lineas tenemos la acción *Copiar previo* que permite traer los datos del registro anterior al registro que estamos creando.
@@ -175,16 +175,18 @@ Para controlar el riesgo que queremos asumir con cada cliente podemos utilizar l
   :Nombre: Es la etiqueta identificativa.
   :Tipo: Podemos definir límites sobre las reservas (serán las reservas no facturadas) o sobre la facturación (serán las facturas no pagadas).
 
-  :Divisa: Indica la divisa del importe que vamos a poner como límite
-  :Limite: Importe del límite
+  :Divisa: Indica la divisa del importe que vamos a poner como límite.
+  :Limite: Importe del límite.
 
-  :Umbral de aviso: Importe a partir del que queremos recibir un aviso
+  :Umbral de aviso: Importe a partir del que queremos recibir un aviso.
   :Email: Direcciones de correo que van a recibir el aviso, separadas por el simbolo ;
-  :Status: Para ver si el límite está activado, desactivado, avisado o excedido //TODO: ¿Qué aplicación tienen los dos últimos valores si un límite se puede aplicar a varios clientes 
+  :Status: Para ver si el límite está activado, desactivado, avisado o excedido. 
+
+Un límite de crédito puede aplicar a un grupo de agencias que comparten el limite, de manera que cuando una de las agencias del grupo se pasa del crédito, la limitación aplica a todas las agencias.
 
 Proveedores
 ===========
-En *Biz -> Proveedores* podremos mantener la información de los proveedores a los que enviamos las peticiones de servicio (reservas o servicios) y de los que vamos a recibir las facturas de compra que tendremos que validar contra nuestras previsiones. En la lista de proveedores el usuario podrá ver el importe en pedidos de compra, el importe en facturas recibidas y el importe pendiente de pago. Desde la ficha del proveedor vamos a poder generar un PDF con todos los precios de compra de un proveedor TODO: "Ahora mismo no hace nada, lo he probado en varios proveedores". Los datos a mantener para cada proveedor son los siguientes:
+En *Biz -> Proveedores* podremos mantener la información de los proveedores a los que enviamos las peticiones de servicio (reservas o servicios) y de los que vamos a recibir las facturas de compra que tendremos que validar contra nuestras previsiones. En la lista de proveedores el usuario podrá ver el importe en pedidos de compra, el importe en facturas recibidas y el importe pendiente de pago. Desde la ficha del proveedor vamos a poder generar un PDF con todos los precios de compra de un proveedor. Los datos a mantener para cada proveedor son los siguientes:
 
   :Nombre: Es la etiqueta identificativa.
   :Status: Para poder desactivar un proveedor sin necesidad de borrarlo, así dejaremos de poder trabajar con él, respetando los históricos.
@@ -200,29 +202,31 @@ En *Biz -> Proveedores* podremos mantener la información de los proveedores a l
 Facturación
 -----------
 
-  :Exportable a la app de facturación: TODO: ¿Que significa esto? ¿Enlace con BC?
+  :Exportable a la app de facturación: Para poder indicar si los movimientos de este proveedor se van a exportar a contabilidad.
   :ID en app de facturación: Código del proveedor dentro de la app de facturación.
 
 Datos adicionales
 -----------------
 
   :Pagadero a en vouchers: Texto que aparecerá en los vouchers que se emitan para los servicios de este proveedor.
-  :Porcentaje extra de markup: Será un porcentaje de margen adicional que se aplicará sobre los márgenes definidos. TODO: ¿se aplica a la hora de buscar el precio de venta, verdad?
+  :Porcentaje extra de markup: Será un porcentaje de margen adicional que se aplicará sobre los márgenes definidos para encontrar el precio de venta.
   :Provee hotel:
   :Provee transfer:
   :Provee excursiones:
   :Provee ticket:
-  :Provee genericos: TODO: ¿Que aplicación práctica tienen estos campos? 
+  :Provee genericos:
+
+Para que este proveedor aparezca en el area correspondiente de operaciones.
 
 Envío de pedidos
 ----------------
 
-  :Método envío pedidos: Podemos escoger entre el envío por correo como un PDF adjunto, el envío mediante XML o el envío mediante el agente de QuoOn. TODO: ¿Explicación?
+  :Método envío pedidos: Podemos escoger entre el envío por correo como un PDF adjunto, el envío mediante XML o el envío mediante el agente de QuoOn (para aquellos hoteles que trabajen con QuoHotel).
   :Valor incluido en pedido: Marcaremos este campo cuando queramos que la valoración del servicio vaya incluida en el envío.
   :Dirección de envío: Dirección a la que vamos a enviar los pedidos de compra.
   :Envío automático: Marcar este campo para que los pedidos de compra se envíen automáticamente al asignarlo al proveedor.
   :Confirmación automática: Si marcamos este campo el pedido se marca como confirmado al enviarlo, en caso contrario hay que marcar el pedido como confirmado, de manera manual.
-  :Email certificado: Para que el envío del correo se haga utilizando SSL. TODO: Confirmar que sea cierto.
+  :Email certificado: Para indicar que vamos a almacenar la información del momento de lectura del correo por parte del proveedor.
 
 Representantes
 ==============
@@ -230,10 +234,10 @@ En *Biz -> Reps* vamos a poder mantener la información de los representantes de
 
   :Nombre: Es la etiqueta identificativa.
   :Status: Para poder desactivar un representante sin necesidad de borrarlo, así dejaremos de poder trabajar con él, respetando los históricos.
-  :Agente financiero: Enlace con los agentes que se definen en el area de finanzas que tienen la información fiscal y de impuestos. TODO: ¿Como se distingue cuando el representante es un empleado de cuando no lo és?
+  :Agente financiero: Enlace con los agentes que se definen en el area de finanzas que tienen la información fiscal y de impuestos.
 
   :Oficina: Todo representante debe estar asociado a una oficina de venta. Este dato permitirá obtener una estadistica de todos los representantes de cada oficina.
-  :Supervisor: Lo vamos a utilizar en aquellos casos en que un representante trabaje bajo la supervisión de otro representante. TODO: Yo estos campos los quitaria
+  :Supervisor: Lo vamos a utilizar en aquellos casos en que un representante trabaje bajo la supervisión de otro representante.
   :Porcentaje comision supervisor: Cuando el supervisor cobre una comisión sobre las ventas de los representantes bajo su supervisión.
 
   :Dirección: Es la dirección postal completa del representante.
@@ -257,38 +261,38 @@ Desde la ficha de cada representante podremos lanzar el proceso de liquidación 
   6. Se tienen que introducir los pagos, para representar el dinero entregado por el representante, que servirán para liquidarse con la factura.
   7. Una vez completado el proceso se podrá generar un PDF con la liquidación.
 
-Comisiones
-==========
+Comisiones Representantes
+=========================
 En *Biz -> Comisiones* vamos a poder definir las comisiones que se aplican a los representantes. A cada comisión que se le asigna una etiqueta y después abrir la ficha de la comisión para detallarla. El detalle de las comisiones se introduce de la siguiente manera:
 
   :Agente: Será el código de representante al que aplica
   :Linea de producto: Enlace con las lineas de producto que agrupan los productos simplificando la introducción de comisiones.
   :Fechas: Periodo de aplicación
-  :Base: Para indicar cual es el importe base de cálculo de la comisión. Las opciones son Total o Margen. TODO: No veo una manera facil de aplicar la comisión por Margen y me falta una opción para indicar Total sin impuestos.
+  :Base: Para indicar cual es el importe base de cálculo de la comisión. Las opciones son Total o Margen.
   :Porcentaje: Precio de la comisión
   :Supervisor: Lo vamos a utilizar en aquellos casos en que un representante trabaje bajo la supervisión de otro representante.
   :Comisión supervisor: Cuando el supervisor cobre una comisión sobre las ventas de los representantes bajo su supervisión.
-  :Resultado: TODO: Comentar opciones
+  :Resultado: Indicamos si la comisión se convierte en un menos precio de venta, liquidación al representante o factura para el caso de proveedores terceros. 
   :Impuestos incluidos: Permite indicar si a la comisión hay que aplicar
 
 Centros de producción
 =====================
-TODO: Comentarlo con Miguel
+Podemos crear distintos centros de producción para indicar donde se ha realizado la venta.
 
 Códigos promocionales
 =====================
 Los códigos promocionales se utilizan para aplicar descuentos sobre una venta, puede representar un descuento porcentual, un descuento concreto o un precio final. Para cada descuento podemos indicar:
 
-  :Código: TODO: ¿Como se asigna el valor?
-  :Nombre: Será la etiqueta identificativa.
+  :Código: Será la etiqueta identificativa.
+  :Nombre: Descripción ampliada del código promocional
   :Agencia: Si queremos limitar la aplicación a los clientes de una sola agencia.
   :Periodo venta: Con los campos de inicio y final podemos limitar las reservas a las que se aplica, en base a su fecha de venta.
 
   :Tipo: Para indicar si se trata de un porcentaje o un precio final. Este valor hará que se muestren unos campos u otros.
-  :Porcentaje descuento: Porcentaje a aplicar sobre el importe de la reserva. TODO: ¿Como encontramos la base, con o sin impuestos?
+  :Porcentaje descuento: Porcentaje a aplicar sobre el importe con impuestos de la reserva.
   :Importe máximo: Para controlar que el importe del descuento no supere un importe.
   :Descuento: Cuando queremos que el descuento sea un importe en lugar de un porcentaje.
-  :Precio final: Precio unitario que tendrá el producto al aplicar el cupon. TODO: ¿Precio por persona, por habitación, ...?
+  :Precio final: Precio unitario que tendrá el producto al aplicar el cupon, es un precio total de la reserva.
   :Unidades: Para indicar el máximo número de veces que se puede aplicar el código promocional.
 
 En la ficha de cada promoción vamos a poder ver la lista de reservas a las que se ha aplicado. Estos códigos están principalmente pensados para que el usuario los introduzca al momento de hacer la reserva, aunque también podremos aplicarlos directamente en el backoffice. *Solo se puede aplicar una promoción por reserva*.
@@ -298,8 +302,6 @@ Planes de fidelización
 QuoTravel permite el mantenimiento de planes de fidelización o planes de puntos para que los clientes puedan conseguir puntos a traves de las compras que hacen y después utilizar esos puntos como pago en futuras compras. Los planes de compras se definen de la siguiente manera:
 
   :Nombre: Será la etiqueta identificativa.
-  :Tipo cambio: Será la cantidad de dinero que hay que gastar para conseguir cada punto. TODO: ¿Es esto cierto?
+  :Tipo cambio: Será la cantidad de dinero que hay que gastar para conseguir cada punto.
 
-Dentro del plan podremos definir distintos escalados y dentro de cada uno de ellos podremos definir un tipo de cambio diferente al general del plan. TODO: Los escalados van en función del importe de la venta
-
-TODO: ¿Como se define la manera de aplicar esos puntos? 
+Dentro del plan podremos definir distintos escalados y dentro de cada uno de ellos podremos definir un tipo de cambio diferente al general del plan. Los escalados van en función del importe de la venta.
