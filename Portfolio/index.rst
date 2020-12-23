@@ -72,7 +72,7 @@ Dentro de los contratos vamos a poder incluir unas clausulas que se utilicen en 
 
 Hotel
 =====
-En este área vamos a completar la definición de los productos de hotel que vamos a gestionar dentro de QuoTravel, con toda la codificación asociada así como la gestión de los precios de compra y venta.
+En este área vamos a completar la definición de los productos de hotel que vamos a gestionar dentro de QuoTravel, con toda la codificación asociada así como la gestión de los precios de compra y venta. 
 
 Tipos de Hoteles
 ----------------
@@ -81,12 +81,75 @@ Esta opción nos permite crear, opcionalmente, diferentes tipologias de hoteles,
   :Nombre: Identificación interna.
   :Nombre traducido: Utilizaremos este valor cuando queramos hacer visible esta información de cara al exterior, se podrá traducir a todos los idiomas gestionados en QuoTravel.
 
- Categorias
- ----------
- Utilizaremos esta opción para crear las categorias de establecimientos que queramos manejar dentro de QuoTravel. Cada categoria se define con la siguiente información:
+Categorias
+----------
+Utilizaremos esta opción para crear las categorias de establecimientos que queramos manejar dentro de QuoTravel. Cada categoria se define con la siguiente información:
 
   :Codigo: Etiqueta interna.
   :Nombre: Descripción de la categoria, se podrá traducir a todos los idiomas gestionados en QuoTravel.
   :LLaves: Valor relacionado con la clasificación de los apartamentos
   :Estrellas: Valor relacionado con la clasificación de los hoteles
 
+Regímenes alimenticios
+----------------------
+Hay que crear la codificación interna de los regímenes que vamos a utilizar dentro de los contratos y las reservas. Para definir un régimen hay que introducir la siguiente información:
+
+  :Código: Etiqueta identificativa.
+  :Nombre: Descripción del régimen, se podrá traducir a todos los idiomas gestionados por QuoTravel. 
+
+Tipos de habitación
+-------------------
+En este punto vamos a crear la codificación interna de los diferentes tipos de habitación que vamos a manejar en QuoTravel. Para definir un tipo de habitación hay que introducir la siguiente información:
+
+  :Código: Etiqueta identificativa.
+  :Nombre: Descripción del tipo de habitación, se podrá traducir a todos los idiomas gestionados por QuoTravel.
+
+Extras en hotel
+---------------
+Esta opción se utiliza para mantener los extras que vamos a poder utilizar en los contratos de hotel para definir un cargo o un descuento que se aplicará en la reserva. Para definir un extra hay que introducir la siguiente información:
+
+  :Código: Etiqueta identificativa.
+  :Nombre: Descripción del extra, se podrá traducir a todos los idiomas gestionados por QuoTravel.
+
+Hoteles
+-------
+Al entrar en la lista de hoteles vamos a poder buscar por nombre o filtrar por la oficina de venta, el proveedor, o la zona para localizar el hotel que estamos buscando. La información que vamos a mantener de cada establecimiento hotelero es la siguiente:
+
+  :Nombre: Nombre para mostrar internamente.
+  :Activo: Nos permite desactivar un establecimiento para que dejar de utilizarlo temporalmente.
+  :Oficina: Código de oficina a la que vamos a relacionar este producto/hotel.
+  :Dirección: Datos de contacto.
+  :Punto de recogida: Enlazamos el hotel con un punto de recogida que será el utilizado en las reservas de traslado.
+
+  :Proporcionado por: Podemos enlazar la ficha de hotel con una ficha de proveedor.
+  :Linea de producto: Definir a que linea de producto pertenece el hotel, como hemos visto en el apartado de Negocio estas lineas de producto permiten la aplicación de margenes y la clasificación estadística de nuestros productos.
+  :Zona: Ubicar el hotel dentro de una de las zonas, a traves de la zona estaremos también ubicando el hotel en un destino.
+
+  :Tipo de hotel: Clasificación interna.
+  :Categoría: Indicamos la clasificación del establecimiento.
+  :Cadena hotelera: Datos informativo que nos permitirá filtrar los establecimientos de una cadena a la hora de buscar.
+
+  :URL Google: Enlace a google maps.
+  :Latitud: Coordenada del mapa.
+  :Longitud: Coordenada del mapa, una vez rellenados estos datos podemos usar la opcion Show in google maps para ver la ubicación del establecimiento en ese servicio.
+
+  :Edad mínima niños: Es la edad a partir de la cual aplicaremos el precio de niño a una persona.
+  :Edad mínima jovenes: Es la edad a partir de la cual aplicaremos el precio de junior a una persona.
+  :Edad mínima adultos: Es la edad a partir de la cual aplicaremos el precio de adulto a una persona.
+  :Ordenar por edad: //TODO: Pendientes de MPEREZ
+
+  :Hoja de producto: Enlace con la hoja de producto que vamos a usar para este establecimiento. Las hojas de producto permiten añadir imagenes, videos, etiquetas y características a un producto. Desde la ficha del establecimiento podemos hacer una previsualización de la hoja producto.
+  :PDF: Podemos adjuntar un PDF a la ficha de producto, se puede hacer mediante una imagen o una URL a una carpeta compartida.
+
+  :Habitaciones: Definición de las habitaciones con las que trabaja el establecimiento. //TODO: Más adelante completaremos la información que podemos mantener.
+  :Regímenes: Definición de los regímenes alimenticios con las que trabaja el establecimiento. Dentro del hotel un régimen podrá tener una descripción propia y un orden para la impresión de los contratos.
+  :Cupos: Creación de los distintos cupos que vamos a poder usar en el establecimiento. //TODO: Más adelante completaremos la información que podemos mantener.
+
+En la lista de los hoteles tenemos una opción para crear un punto de recogida para cada establecimiento automatizando esta tarea necesaria para trabajar con los traslados. 
+
+Habitaciones hotel
+------------------
+Dentro del hotel podemos personalizar la información de los tipos de habitación genéricos que hemos creado. La información que podemos mantener es la siguiente:
+
+  :Orden: Decidir el orden de aparición en la impresión.
+  :Descripción: 
