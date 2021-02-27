@@ -181,7 +181,7 @@ Mediante esta opción vamos a definir los extras permitidos en cada hotel. La in
   :Tipo: Enlace con la tabla de códigos genéricos definidos en este menú.
   :Descripción: Texto libre que podemos traducir a todos los idiomas gestionados por QuoTravel.
   :Opcional: Cuando este campo no esté marcado le estamos diciendo al sistema que este extra se aplicará todas reservas de ese hotel.
-  :Solo uso interno: //TODO: Pendiente MPEREZ
+  :Solo uso interno: Para marcar aquellos extras que no queremos que se puedan usar desde la web.
 
 Paros de venta  
 --------------
