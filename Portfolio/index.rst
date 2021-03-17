@@ -143,7 +143,7 @@ Al entrar en la lista de hoteles vamos a poder buscar por nombre o filtrar por l
 
   :Habitaciones: Definición de las habitaciones con las que trabaja el establecimiento.
   :Regímenes: Definición de los regímenes alimenticios con las que trabaja el establecimiento. Dentro del hotel un régimen podrá tener una descripción propia y un orden para la impresión de los contratos.
-  :Cupos: Creación de los distintos cupos que vamos a poder usar en el establecimiento. //TODO: Más adelante completaremos la información que podemos mantener.
+  :Cupos: Creación de los distintos cupos que vamos a poder usar en el establecimiento.
 
 En la lista de los hoteles tenemos una opción para crear un punto de recogida para cada establecimiento automatizando esta tarea necesaria para trabajar con los traslados. 
 
@@ -213,4 +213,59 @@ Esta opción nos proporciona un calendario donde poder ver y actualizar la infor
 
 Con la acción Set vamos a aplicar la cantidad de habitaciones en el hotel, habitación y periodo especificado.
 
-Adicionalmente disponemos de una consulta de consumo de cupos donde el usuario puede ver aquellos hoteles que tengan una determinada cantidad de habitaciones libres, lo que es una herramienta util a la hora de responder a una petición de reserva.
+Adicionalmente disponemos de una consulta de consumo de cupos donde el usuario puede ver aquellos hoteles que tengan una determinada cantidad de habitaciones libres, en un periodo de fechas, lo que es una herramienta util a la hora de responder a una petición de reserva.
+
+Contratos hotel
+---------------
+En QuoTravel vamos a poder mantener la información de todos los contratos relacionados con los hoteles con lo que trabaja la agencia. Para poder vender un producto tenemos dos opciones :
+
+  * Cargar un contrato de venta
+  * Cargar un contrato de compra y definir un margen para la linea de producto de ese hotel.
+
+  Esto es, podemos vender sin que exista contrato de compra o sin que exista contrato de venta. Realmente la venta es independiente de la compra, a no ser que en el contrato de venta explicitemos que, para ese contrato de venta, deben utilizarse exactamente uno o varios contratos de compra determinados.
+
+Contratos compra hotel
+**********************
+En estos contratos vamos a mantener las condiciones en que compramos el producto, en cada uno de los contratos vamos a poder mantener la siguiente información, agrupada en distintas secciones:
+
+  - General
+      :Tarifa: Definiremos a que nivel de tarifa aplica este contrato.
+      :Vendible con markup: Este contrato servirá de base a la venta mediante aplicando los margenes de las agencias o grupos de agencias.
+      :Tipo de precio: Podemos trabajar con precios netos o con precios venta al público.
+      :Fee x reserva: Precio que aplicaremos a cada reserva, adicional a los distintos precios definidos en el contrato.
+      :Precios iva incluido: Para indicar que los precios que se introducen en el contrato ya llevan los impuestos incluidos. 
+      :Divisa: Código de la divisa en que están introducidos los precios.
+      :Concepto facturación: Enlace con la definición de los impuestos que aplicarán en este contrato.
+      :Línea de productos: Indicaremos a que linea de productos aplica el contrato, de esta manera podemos comprar el mismo hotel a distintos precios en función de este concepto de QuoTravel.
+      :Fechas de validez: Periodo de fechas cubierto por el contrato.
+      :Fechas de venta: Periodo de ventas en el que aplicaremos este contrato.
+      :Comentarios: Campos en los que podemos indicar unos textos libres con comentarios internos o algún termino especial del contrato.
+      :Cupo: Definiremos de que cupo van a consumir las reservas de este contrato.
+      :Cupo de seguridad: Definiremos cual es el cupo de seguridad que tendremos para las reservas de este contrato. Este cupo de seguridad se aplicará en caso de existir un paro de ventas. 
+      :Porcentaje incremento: //TODO: Pendiente MPEREZ
+      :PDF en ingles: Cuando queramos que la generación del PDF, con los datos del contrato, se haga en ingles.
+      :Max. personas por reserva: Cantidad máxima de personas que aceptaremos en una reserva para poder aplicar este contrato.
+      :Max. habitaciones por reserva: Cantidad máxima de habitaciones.
+      :Permite precios ceo: //TODO: Pendiente MPEREZ
+
+  - Relaciones, con los datos introducidos en esta sección vamos a limitar las reservas que pueden utilizar este contrato.
+      :Oficina: Todo contrato debe estar relacionado con una de las oficinas de la compañia.
+      :Proveedor: Empresa que nos va a facturar el coste de las reservas.
+      :Agencias permitidas: Podemos relacionar el contrato con agencias, de manera individual, o mediante grupos de agencias. 
+      :Mercados permitidos: Podemos relacionar el contrato con alguno de los mercados creados anteriormente.
+      :Marcas: Podemos relacionar el contrato con alguna de nuestras marcas.
+      :Agencias prohibidas: En aquellos casos en que sea más sencillo, podemos utilizar una lista de agencias o grupos de agencias prohibidas en lugar de las permitidas.
+      :Mercados prohibidos: De igual manera lo podemos hacer con los mercados de origen.
+
+  - Firma, almacenamiento informativo de los datos relativos a la firma del contrato. Estos datos se pueden obtener mediante la integración con Docusign.
+      :Firmado en: Lugar de la firma.
+      :Proveedor firmado por: Representante del proveedor.
+      :Representante empresa: Representante de la agencia.
+      :Fecha firma: Momento de la firma.
+      :ID Docusign: Identificación recibida de la plataforma Docusign.
+      :Enviado: Fecha de envío. 
+      :Firmado: Fecha de la firma
+      :Firmado por: Identificación de la persona que firmó el contrato.
+
+  - Comisiones
+      :Condiciones de comisión: Relación con la tabla de comisiones en caso de que existan. 
