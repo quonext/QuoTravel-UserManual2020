@@ -229,43 +229,66 @@ Contratos compra hotel
 En estos contratos vamos a mantener las condiciones en que compramos el producto, en cada uno de los contratos vamos a poder mantener la siguiente información, agrupada en distintas secciones:
 
   - General
-      :Tarifa: Definiremos a que nivel de tarifa aplica este contrato.
-      :Vendible con markup: Este contrato servirá de base a la venta mediante aplicando los margenes de las agencias o grupos de agencias.
-      :Tipo de precio: Podemos trabajar con precios netos o con precios venta al público.
-      :Fee x reserva: Precio que aplicaremos a cada reserva, adicional a los distintos precios definidos en el contrato.
-      :Precios iva incluido: Para indicar que los precios que se introducen en el contrato ya llevan los impuestos incluidos. 
-      :Divisa: Código de la divisa en que están introducidos los precios.
-      :Concepto facturación: Enlace con la definición de los impuestos que aplicarán en este contrato.
-      :Línea de productos: Indicaremos a que linea de productos aplica el contrato, de esta manera podemos comprar el mismo hotel a distintos precios en función de este concepto de QuoTravel.
-      :Fechas de validez: Periodo de fechas cubierto por el contrato.
-      :Fechas de venta: Periodo de ventas en el que aplicaremos este contrato.
-      :Comentarios: Campos en los que podemos indicar unos textos libres con comentarios internos o algún termino especial del contrato.
-      :Cupo: Definiremos de que cupo van a consumir las reservas de este contrato.
-      :Cupo de seguridad: Definiremos cual es el cupo de seguridad que tendremos para las reservas de este contrato. Este cupo de seguridad se aplicará en caso de existir un paro de ventas. 
-      :Porcentaje incremento: //TODO: Pendiente MPEREZ
-      :PDF en ingles: Cuando queramos que la generación del PDF, con los datos del contrato, se haga en ingles.
-      :Max. personas por reserva: Cantidad máxima de personas que aceptaremos en una reserva para poder aplicar este contrato.
-      :Max. habitaciones por reserva: Cantidad máxima de habitaciones.
-      :Permite precios ceo: //TODO: Pendiente MPEREZ
+    :Tarifa: Definiremos a que nivel de tarifa aplica este contrato.
+    :Vendible con markup: Este contrato servirá de base a la venta mediante aplicando los margenes de las agencias o grupos de agencias.
+    :Tipo de precio: Podemos trabajar con precios netos o con precios venta al público.
+    :Fee x reserva: Precio que aplicaremos a cada reserva, adicional a los distintos precios definidos en el contrato.
+    :Precios iva incluido: Para indicar que los precios que se introducen en el contrato ya llevan los impuestos incluidos. 
+    :Divisa: Código de la divisa en que están introducidos los precios.
+    :Concepto facturación: Enlace con la definición de los impuestos que aplicarán en este contrato.
+    :Línea de productos: Indicaremos a que linea de productos aplica el contrato, de esta manera podemos comprar el mismo hotel a distintos precios en función de este concepto de QuoTravel.
+    :Fechas de validez: Periodo de fechas cubierto por el contrato.
+    :Fechas de venta: Periodo de ventas en el que aplicaremos este contrato.
+    :Comentarios: Campos en los que podemos indicar unos textos libres con comentarios internos o algún termino especial del contrato.
+    :Cupo: Definiremos de que cupo van a consumir las reservas de este contrato.
+    :Cupo de seguridad: Definiremos cual es el cupo de seguridad que tendremos para las reservas de este contrato. Este cupo de seguridad se aplicará en caso de existir un paro de ventas. 
+    :Porcentaje incremento: //TODO: Pendiente MPEREZ
+    :PDF en ingles: Cuando queramos que la generación del PDF, con los datos del contrato, se haga en ingles.
+    :Max. personas por reserva: Cantidad máxima de personas que aceptaremos en una reserva para poder aplicar este contrato.
+    :Max. habitaciones por reserva: Cantidad máxima de habitaciones.
+    :Permite precios ceo: //TODO: Pendiente MPEREZ
 
   - Relaciones, con los datos introducidos en esta sección vamos a limitar las reservas que pueden utilizar este contrato.
-      :Oficina: Todo contrato debe estar relacionado con una de las oficinas de la compañia.
-      :Proveedor: Empresa que nos va a facturar el coste de las reservas.
-      :Agencias permitidas: Podemos relacionar el contrato con agencias, de manera individual, o mediante grupos de agencias. 
-      :Mercados permitidos: Podemos relacionar el contrato con alguno de los mercados creados anteriormente.
-      :Marcas: Podemos relacionar el contrato con alguna de nuestras marcas.
-      :Agencias prohibidas: En aquellos casos en que sea más sencillo, podemos utilizar una lista de agencias o grupos de agencias prohibidas en lugar de las permitidas.
-      :Mercados prohibidos: De igual manera lo podemos hacer con los mercados de origen.
+    :Oficina: Todo contrato debe estar relacionado con una de las oficinas de la compañia.
+    :Proveedor: Empresa que nos va a facturar el coste de las reservas.
+    :Agencias permitidas: Podemos relacionar el contrato con agencias, de manera individual, o mediante grupos de agencias. 
+    :Mercados permitidos: Podemos relacionar el contrato con alguno de los mercados creados anteriormente.
+    :Marcas: Podemos relacionar el contrato con alguna de nuestras marcas.
+    :Agencias prohibidas: En aquellos casos en que sea más sencillo, podemos utilizar una lista de agencias o grupos de agencias prohibidas en lugar de las permitidas.
+    :Mercados prohibidos: De igual manera lo podemos hacer con los mercados de origen.
 
   - Firma, almacenamiento informativo de los datos relativos a la firma del contrato. Estos datos se pueden obtener mediante la integración con Docusign.
-      :Firmado en: Lugar de la firma.
-      :Proveedor firmado por: Representante del proveedor.
-      :Representante empresa: Representante de la agencia.
-      :Fecha firma: Momento de la firma.
-      :ID Docusign: Identificación recibida de la plataforma Docusign.
-      :Enviado: Fecha de envío. 
-      :Firmado: Fecha de la firma
-      :Firmado por: Identificación de la persona que firmó el contrato.
+    :Firmado en: Lugar de la firma.
+    :Proveedor firmado por: Representante del proveedor.
+    :Representante empresa: Representante de la agencia.
+    :Fecha firma: Momento de la firma.
+    :ID Docusign: Identificación recibida de la plataforma Docusign.
+    :Enviado: Fecha de envío. 
+    :Firmado: Fecha de la firma
+    :Firmado por: Identificación de la persona que firmó el contrato.
 
   - Comisiones
-      :Condiciones de comisión: Relación con la tabla de comisiones en caso de que existan. 
+    :Condiciones de comisión: Relación con la tabla de comisiones en caso de que existan. Para más información puede consultar el apartado Comisiones dentro de Reglas de negocio.
+
+  - Pago
+    :Terminos de pago: Estableceremos cuales son las condiciones de pago de costes asociados con este contrato. Para más información puede consultar el apartado Terminos de pago dentro de Financiero.
+
+  - Adjuntos, dentro de esta área vamos a poder adjuntar todos aquellos ficheros que queramos tener a mano sin necesidad de salir de la aplicación.
+
+  - Cancelación
+    :Reglas de cancelación: Podemos definir unas reglas de cancelación propias para cada contrato. 
+
+  - Clausulas, podemos introducir una serie de clausulas de texto libre que se utilizarán en la impresion en pdf del contrato.
+
+  - Contratos relacionados, usaremos este área cuando queramos crear una linea para forzar el uso de determinados contratos de venta para las reservas que utilicen este contrato de compra.
+
+  - Fechas de vencimiento, área informativa para usar cuando el contrato tenga asociado un calendario de pagos predefinido con el proveedor.
+    :Agente: Será el agente financiero al que se tiene que hacer el pago. 
+    :Tipo: Podemos establecer si se trata de un pago o un cobro.
+    :Fecha: Vencimiento del pago.
+    :Importe: Monto del pago.
+    :Pagado: Marcar cuando se haya realizado el pago. 
+
+  - Previsión, cuando se quiere introducir una previsión de ocupación.
+
+  - Ofertas, acceso de consulta a las ofertas que se hayan introducido para el hotel

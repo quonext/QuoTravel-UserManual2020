@@ -112,7 +112,7 @@ En las lineas del markup podemos detallar el modo de aplicación y el importe de
 
 Comisiones
 ==========
-Las comisiones se aplican tanto a clientes como proveedores, y pueden convertirse en un descuento o en una comisión real con su iva correspondiente. En ambos casos se genera una línea de cargo que facturaremos, utilizaremos para validar la factura del proveedor, o se aplicará como un descuento en la factura. En el caso de las reservas que son pago directo en el hotel será el único servicio que vamos a facturar, con lo que será la única línea de cargo existente en la reserva. Las comisiones se van liquidando con cada reserva o pedido de compra. Las comisiones se definen en *Biz -> Comisiones* y la información que podemos mantener es la siguiente:
+Las comisiones se aplican tanto a clientes como proveedores, y pueden convertirse en un descuento o en una comisión real con su iva correspondiente. En ambos casos se genera una línea de cargo que facturaremos, utilizaremos para validar la factura del proveedor o se aplicará como un descuento en la factura. En el caso de las reservas que son pago directo en el hotel será el único servicio que vamos a facturar, con lo que será la única línea de cargo existente en la reserva. Las comisiones se van liquidando con cada reserva o pedido de compra. Las comisiones se definen en *Biz -> Comisiones* y la información que podemos mantener es la siguiente:
 
   :Nombre: Esta será la etiqueta identificativa.
   :Activa: Un código de comisiones se puede desactivar temporalmente.
