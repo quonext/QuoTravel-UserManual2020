@@ -217,12 +217,12 @@ Adicionalmente disponemos de una consulta de consumo de cupos donde el usuario p
 
 Contratos hotel
 ---------------
-En QuoTravel vamos a poder mantener la información de todos los contratos relacionados con los hoteles con lo que trabaja la agencia. Para poder vender un producto tenemos dos opciones :
+En QuoTravel vamos a poder mantener la información de todos los contratos relacionados con los hoteles con lo que trabaja la agencia. Para poder vender un producto tenemos dos opciones:
 
   * Cargar un contrato de venta
   * Cargar un contrato de compra y definir un margen para la linea de producto de ese hotel.
 
-  Esto es, podemos vender sin que exista contrato de compra o sin que exista contrato de venta. Realmente la venta es independiente de la compra, a no ser que en el contrato de venta explicitemos que, para ese contrato de venta, deben utilizarse exactamente uno o varios contratos de compra determinados.
+Esto es, podemos vender sin que exista contrato de compra o sin que exista contrato de venta. Realmente la venta es independiente de la compra, a no ser que en el contrato de venta explicitemos que, para ese contrato de venta, deben utilizarse exactamente uno o varios contratos de compra determinados.
 
 Contratos compra hotel
 **********************
@@ -239,6 +239,8 @@ En estos contratos vamos a mantener las condiciones en que compramos el producto
     :Línea de productos: Indicaremos a que linea de productos aplica el contrato, de esta manera podemos comprar el mismo hotel a distintos precios en función de este concepto de QuoTravel.
     :Fechas de validez: Periodo de fechas cubierto por el contrato.
     :Fechas de venta: Periodo de ventas en el que aplicaremos este contrato.
+    :Hotel: Hotel del contrato.
+    
     :Comentarios: Campos en los que podemos indicar unos textos libres con comentarios internos o algún termino especial del contrato.
     :Cupo: Definiremos de que cupo van a consumir las reservas de este contrato.
     :Cupo de seguridad: Definiremos cual es el cupo de seguridad que tendremos para las reservas de este contrato. Este cupo de seguridad se aplicará en caso de existir un paro de ventas. 
@@ -280,7 +282,7 @@ En estos contratos vamos a mantener las condiciones en que compramos el producto
 
   - Clausulas, podemos introducir una serie de clausulas de texto libre que se utilizarán en la impresion en pdf del contrato.
 
-  - Contratos relacionados, usaremos este área cuando queramos crear una linea para forzar el uso de determinados contratos de venta para las reservas que utilicen este contrato de compra.
+  - Contratos relacionados, usaremos este área cuando queramos crear una linea para relacionar el uso de contratos de compra y contratos de venta de manera conjunta.
 
   - Fechas de vencimiento, área informativa para usar cuando el contrato tenga asociado un calendario de pagos predefinido con el proveedor.
     :Agente: Será el agente financiero al que se tiene que hacer el pago. 
@@ -292,3 +294,35 @@ En estos contratos vamos a mantener las condiciones en que compramos el producto
   - Previsión, cuando se quiere introducir una previsión de ocupación.
 
   - Ofertas, acceso de consulta a las ofertas que se hayan introducido para el hotel
+
+  - Garantia, para poder marcar el contrato como contrato garantizado con el proveedor
+
+  - Temporadas, dentro de los contratos tenemos que crear las temporadas para cubrir el periodo de fechas del contrato, tendremos que abrir tantas temporadas como precios o condiciones distintas tengamos. Cada temporada se define por un código y puede cubrir un periodo de fechas o varios de ellos, para cada periodo habrá que indicar los días de la semana a los que afecta.
+ 
+  - Precios, dentro de cada temporada QuoTravel nos presenta todas las combinaciones entre las habitaciones definidas para el hotel y los régimenes alimenticios para facilitar la introducción de los precios de esa temporada.
+    :Precio habitación: Precio unitario de la habitación.
+    :Precio uso individual: Variación de precio cuando en la habitación se aloje una sola persona. Podemos especificar un precio o una variación porcentual (+30.0% o -15.0%).
+    :Precio adulto: Precio unitario del alojamiento de cada persona de tipo adulto.
+    :Precio comida adulto: Precio unitario correspondiente al regimen, para cada persona de tipo adulto.
+    :Precio adulto extra: Variación de precio cuando en la habitación se alojan más adultos de los indicados en la capacidad de la habitación. //TODO: Falta definir que campo de la habitación.
+    :Precio niño: Precio unitario del alojamiento de cada persona de tipo niño.
+    :Precio comida niño: Precio unitario correspondiente al regimen, para cada persona de tipo niño.
+    :Precio niño extra: Variación de precio cuando en la habitación se alojan más niños de los indicados en la capacidad de la habitación. //TODO: Falta definir que campo de la habitación.
+    :Precio junior: Precio unitario del alojamiento de cada persona de tipo junior.
+    :Precio comida junior: Precio unitario correspondiente al regimen, para cada persona de tipo junior.
+    :Precio junior extra: Variación de precio cuando en la habitación se alojan más juniors de los indicados en la capacidad de la habitación. //TODO: Falta definir que campo de la habitación.   
+    :Precio infant: Precio unitario del alojamiento de cada persona de tipo infant/bebe.
+    :Precio comida infant: Precio unitario correspondiente al regimen, para cada persona de tipo infant/bebe.
+    :Precio infant extra: Variación de precio cuando en la habitación se alojan más infants de los indicados en la capacidad de la habitación. //TODO: Falta definir que campo de la habitación.
+
+  - Mínimo de estancias, definición de las posibles restricciones de duración de una reserva para ser aceptada por el proveedor.
+    :Periodo de fechas: Las condiciones podrán variar dentro del contrato.
+    :Noches: Cantidad mínima de noches en el hotel. 
+    :On Request: Podremos indicar que la reserva entra pero queda en estado On Request hasta que el proveedor conteste a nuestra petición.
+    :Porcentaje: Extra coste que tendremos que aplicar a las reservas que no cumplan la restricción que estamos definiendo. En este caso será un porcentaje que aplicaremos sobre el total del coste de la reserva.
+    :Valor: Extra coste que tendremos que aplicar a las reservas que no cumplan la restricción que estamos definiendo. En este caso será un precio que aplicaremos en función del siguiente campo.
+    :Por: Para definir si el campo Valor se aplica por Persona, Habitación, Adulto o Niño.
+    :Habitaciones: Podemos escoger los tipos de habitación a los que afecta está definición de estancias mínimas.
+    :Regímenes: Podemos escoger los regímenes a los que afecta esta definición de estancias mínimas.
+    
+  - Release, definición de las reglas de release que aplican dentro del contrato
