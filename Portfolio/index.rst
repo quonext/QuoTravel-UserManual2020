@@ -295,7 +295,7 @@ En estos contratos vamos a mantener las condiciones en que compramos el producto
 
   - Ofertas, acceso de consulta a las ofertas que se hayan introducido para el hotel
 
-  - Garantia, para poder marcar el contrato como contrato garantizado con el proveedor
+  - Garantia, para poder marcar el contrato como contrato garantizado con el proveedor, hace que se facturen solo los extras (Terceras personas, régimen, ...)
 
   - Temporadas, dentro de los contratos tenemos que crear las temporadas para cubrir el periodo de fechas del contrato, tendremos que abrir tantas temporadas como precios o condiciones distintas tengamos. Cada temporada se define por un código y puede cubrir un periodo de fechas o varios de ellos, para cada periodo habrá que indicar los días de la semana a los que afecta.
  
@@ -304,16 +304,16 @@ En estos contratos vamos a mantener las condiciones en que compramos el producto
     :Precio uso individual: Variación de precio cuando en la habitación se aloje una sola persona. Podemos especificar un precio o una variación porcentual (+30.0% o -15.0%).
     :Precio adulto: Precio unitario del alojamiento de cada persona de tipo adulto.
     :Precio comida adulto: Precio unitario correspondiente al regimen, para cada persona de tipo adulto.
-    :Precio adulto extra: Variación de precio cuando en la habitación se alojan más adultos de los indicados en la capacidad de la habitación. //TODO: Falta definir que campo de la habitación.
+    :Precio adulto extra: Variación de precio a partir del tercer adulto.
     :Precio niño: Precio unitario del alojamiento de cada persona de tipo niño.
     :Precio comida niño: Precio unitario correspondiente al regimen, para cada persona de tipo niño.
-    :Precio niño extra: Variación de precio cuando en la habitación se alojan más niños de los indicados en la capacidad de la habitación. //TODO: Falta definir que campo de la habitación.
+    :Precio niño extra: Variación de precio a partir del tercer niño.
     :Precio junior: Precio unitario del alojamiento de cada persona de tipo junior.
     :Precio comida junior: Precio unitario correspondiente al regimen, para cada persona de tipo junior.
-    :Precio junior extra: Variación de precio cuando en la habitación se alojan más juniors de los indicados en la capacidad de la habitación. //TODO: Falta definir que campo de la habitación.   
+    :Precio junior extra: Variación de precio a partir del tercer junior.   
     :Precio infant: Precio unitario del alojamiento de cada persona de tipo infant/bebe.
     :Precio comida infant: Precio unitario correspondiente al regimen, para cada persona de tipo infant/bebe.
-    :Precio infant extra: Variación de precio cuando en la habitación se alojan más infants de los indicados en la capacidad de la habitación. //TODO: Falta definir que campo de la habitación.
+    :Precio infant extra: Variación de precio a partir del tercer infant.
 
   - Mínimo de estancias, definición de las posibles restricciones de duración de una reserva para ser aceptada por el proveedor.
     :Periodo de fechas: Las condiciones podrán variar dentro del contrato.
@@ -325,4 +325,23 @@ En estos contratos vamos a mantener las condiciones en que compramos el producto
     :Habitaciones: Podemos escoger los tipos de habitación a los que afecta está definición de estancias mínimas.
     :Regímenes: Podemos escoger los regímenes a los que afecta esta definición de estancias mínimas.
     
-  - Release, definición de las reglas de release que aplican dentro del contrato
+  - Release, definición de las reglas de release que aplican dentro del contrato.
+    :Periodo de fechas: Las condiciones de release pueden variar dentro del contrato
+    :Release: Cantidad de días de cada condición
+    :Habitaciones: Podemos escoger los tipos de habitación a los que afecta este release.
+
+  - Controles de checkin / checkout, definición de aquellas condiciones especiales que puedan afectar a la aceptación de una reserva.
+    :Periodo de fechas: Las condiciones de release pueden variar dentro del contrato
+    :On Request: Podremos indicar que la reserva entra pero queda en estado On Request hasta que el proveedor conteste a nuestra petición.
+    :Dias de la semana: Selección de los dias que debe cumplir la reserva para ser aceptada
+    :Checkin: Para inidicar que la limitación afecta a la entrada de la reserva.
+    :Checkout: Para inidicar que la limitación afecta a la salida de la reserva.
+    :Estancia: Para inidicar que la limitación afecta a la estancia de la reserva.
+
+  - Suplementos, mantenimiento de los extras y suplementos que se han definido en el contrato.
+    :Orden: Utilizando este campo podemos definir como se aplican los suplementos en aquellas reservas a las que aplique más de un suplemento.
+    :Periodo de fechas: Definición del periodo de aplicación.
+    :Extra: Código del extra
+    :Afectado por ofertas: En caso de que marquemos este campo, cuando haya una oferta porcentual o de sustitución tendrá en cuento el importe producido por este suplemento.
+    :Por: Las opciones son Persona, Habitación, Adulto o Niño.
+    :Alcance: Las opciones son Noche o Reserva.
